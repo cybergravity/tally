@@ -1,15 +1,15 @@
-	/*
-  	Flaticon icon font: Flaticon
-  	Creation date: 13/03/2018 03:24
-  	*/
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 13/03/2018 03:24
+    */
 
-@font-face {
+    @font-face {
   font-family: "Flaticon";
-  src: url("./Flaticon.eot");
-  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
-       url("./Flaticon.woff") format("woff"),
-       url("./Flaticon.ttf") format("truetype"),
-       url("./Flaticon.svg#Flaticon") format("svg");
+  src: url("Flaticon.eot");
+  src: url("Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("Flaticon.woff") format("woff"),
+       url("Flaticon.ttf") format("truetype"),
+       url("Flaticon.svg#Flaticon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -17,19 +17,26 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: "Flaticon";
-    src: url("./Flaticon.svg#Flaticon") format("svg");
+    src: url("Flaticon.svg#Flaticon") format("svg");
   }
 }
 
-[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
-[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
-  font-family: Flaticon;
-        font-size: 20px;
-font-style: normal;
-margin-left: 20px;
-}
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
 
-.flaticon-delivery-truck:before { content: "\f100"; }
+    .flaticon-delivery-truck:before { content: "\f100"; }
 .flaticon-shopping-bag:before { content: "\f101"; }
 .flaticon-box-3:before { content: "\f102"; }
 .flaticon-box-2:before { content: "\f103"; }
@@ -228,3 +235,203 @@ margin-left: 20px;
 .flaticon-right-arrow:before { content: "\f1c4"; }
 .flaticon-expand:before { content: "\f1c5"; }
 .flaticon-repeat:before { content: "\f1c6"; }
+    
+    $font-Flaticon-delivery-truck: "\f100";
+    $font-Flaticon-shopping-bag: "\f101";
+    $font-Flaticon-box-3: "\f102";
+    $font-Flaticon-box-2: "\f103";
+    $font-Flaticon-box-1: "\f104";
+    $font-Flaticon-laptop: "\f105";
+    $font-Flaticon-coffee-cup: "\f106";
+    $font-Flaticon-user-6: "\f107";
+    $font-Flaticon-user-5: "\f108";
+    $font-Flaticon-remove-user-1: "\f109";
+    $font-Flaticon-customer-support: "\f10a";
+    $font-Flaticon-user-4: "\f10b";
+    $font-Flaticon-user-3: "\f10c";
+    $font-Flaticon-user-2: "\f10d";
+    $font-Flaticon-remove-user: "\f10e";
+    $font-Flaticon-add-user: "\f10f";
+    $font-Flaticon-tea-cup: "\f110";
+    $font-Flaticon-pen: "\f111";
+    $font-Flaticon-desk: "\f112";
+    $font-Flaticon-ruler: "\f113";
+    $font-Flaticon-pencil: "\f114";
+    $font-Flaticon-analytics: "\f115";
+    $font-Flaticon-google-plus: "\f116";
+    $font-Flaticon-dribbble: "\f117";
+    $font-Flaticon-whatsapp: "\f118";
+    $font-Flaticon-twitter: "\f119";
+    $font-Flaticon-behance: "\f11a";
+    $font-Flaticon-instagram: "\f11b";
+    $font-Flaticon-android: "\f11c";
+    $font-Flaticon-apple: "\f11d";
+    $font-Flaticon-windows: "\f11e";
+    $font-Flaticon-pinterest: "\f11f";
+    $font-Flaticon-youtube: "\f120";
+    $font-Flaticon-paypal: "\f121";
+    $font-Flaticon-linkedin: "\f122";
+    $font-Flaticon-facebook: "\f123";
+    $font-Flaticon-lock-1: "\f124";
+    $font-Flaticon-lock: "\f125";
+    $font-Flaticon-profile-1: "\f126";
+    $font-Flaticon-profile: "\f127";
+    $font-Flaticon-user-1: "\f128";
+    $font-Flaticon-user: "\f129";
+    $font-Flaticon-users: "\f12a";
+    $font-Flaticon-message: "\f12b";
+    $font-Flaticon-placeholder-1: "\f12c";
+    $font-Flaticon-location: "\f12d";
+    $font-Flaticon-arrows-2: "\f12e";
+    $font-Flaticon-technology-2: "\f12f";
+    $font-Flaticon-multimedia-2: "\f130";
+    $font-Flaticon-multimedia-1: "\f131";
+    $font-Flaticon-close: "\f132";
+    $font-Flaticon-home: "\f133";
+    $font-Flaticon-circle: "\f134";
+    $font-Flaticon-arrow: "\f135";
+    $font-Flaticon-mark-1: "\f136";
+    $font-Flaticon-mark: "\f137";
+    $font-Flaticon-shapes-1: "\f138";
+    $font-Flaticon-search-2: "\f139";
+    $font-Flaticon-interface-7: "\f13a";
+    $font-Flaticon-suitcase: "\f13b";
+    $font-Flaticon-chain-1: "\f13c";
+    $font-Flaticon-chain: "\f13d";
+    $font-Flaticon-agenda-1: "\f13e";
+    $font-Flaticon-interface-6: "\f13f";
+    $font-Flaticon-calendar: "\f140";
+    $font-Flaticon-list: "\f141";
+    $font-Flaticon-file-1: "\f142";
+    $font-Flaticon-file: "\f143";
+    $font-Flaticon-interface-5: "\f144";
+    $font-Flaticon-folder: "\f145";
+    $font-Flaticon-stopwatch: "\f146";
+    $font-Flaticon-time: "\f147";
+    $font-Flaticon-clock-1: "\f148";
+    $font-Flaticon-search-1: "\f149";
+    $font-Flaticon-music-1: "\f14a";
+    $font-Flaticon-music: "\f14b";
+    $font-Flaticon-present: "\f14c";
+    $font-Flaticon-layers-1: "\f14d";
+    $font-Flaticon-settings: "\f14e";
+    $font-Flaticon-attachment: "\f14f";
+    $font-Flaticon-gestures: "\f150";
+    $font-Flaticon-tool: "\f151";
+    $font-Flaticon-interface-4: "\f152";
+    $font-Flaticon-interface-3: "\f153";
+    $font-Flaticon-agenda: "\f154";
+    $font-Flaticon-shapes: "\f155";
+    $font-Flaticon-symbol-1: "\f156";
+    $font-Flaticon-symbol: "\f157";
+    $font-Flaticon-interface-2: "\f158";
+    $font-Flaticon-layers: "\f159";
+    $font-Flaticon-clock: "\f15a";
+    $font-Flaticon-web-1: "\f15b";
+    $font-Flaticon-internet: "\f15c";
+    $font-Flaticon-placeholder: "\f15d";
+    $font-Flaticon-signs-3: "\f15e";
+    $font-Flaticon-star-1: "\f15f";
+    $font-Flaticon-web: "\f160";
+    $font-Flaticon-star: "\f161";
+    $font-Flaticon-like-1: "\f162";
+    $font-Flaticon-like: "\f163";
+    $font-Flaticon-cloud: "\f164";
+    $font-Flaticon-database: "\f165";
+    $font-Flaticon-technology-1: "\f166";
+    $font-Flaticon-idea: "\f167";
+    $font-Flaticon-search: "\f168";
+    $font-Flaticon-wifi: "\f169";
+    $font-Flaticon-hands-1: "\f16a";
+    $font-Flaticon-hands: "\f16b";
+    $font-Flaticon-bars-2: "\f16c";
+    $font-Flaticon-arrows-1: "\f16d";
+    $font-Flaticon-interface-1: "\f16e";
+    $font-Flaticon-network: "\f16f";
+    $font-Flaticon-share-1: "\f170";
+    $font-Flaticon-share: "\f171";
+    $font-Flaticon-bars-1: "\f172";
+    $font-Flaticon-cross-1: "\f173";
+    $font-Flaticon-line-1: "\f174";
+    $font-Flaticon-signs-2: "\f175";
+    $font-Flaticon-check: "\f176";
+    $font-Flaticon-technology: "\f177";
+    $font-Flaticon-bars: "\f178";
+    $font-Flaticon-cross: "\f179";
+    $font-Flaticon-add: "\f17a";
+    $font-Flaticon-power: "\f17b";
+    $font-Flaticon-signs-1: "\f17c";
+    $font-Flaticon-round: "\f17d";
+    $font-Flaticon-exclamation: "\f17e";
+    $font-Flaticon-success: "\f17f";
+    $font-Flaticon-error: "\f180";
+    $font-Flaticon-line: "\f181";
+    $font-Flaticon-plus: "\f182";
+    $font-Flaticon-interface: "\f183";
+    $font-Flaticon-signs: "\f184";
+    $font-Flaticon-play-button-1: "\f185";
+    $font-Flaticon-play-button: "\f186";
+    $font-Flaticon-music-player: "\f187";
+    $font-Flaticon-medical: "\f188";
+    $font-Flaticon-photo-camera: "\f189";
+    $font-Flaticon-picture: "\f18a";
+    $font-Flaticon-multimedia: "\f18b";
+    $font-Flaticon-game-controller: "\f18c";
+    $font-Flaticon-imac: "\f18d";
+    $font-Flaticon-paint-palette: "\f18e";
+    $font-Flaticon-envelope-3: "\f18f";
+    $font-Flaticon-envelope-2: "\f190";
+    $font-Flaticon-envelope-1: "\f191";
+    $font-Flaticon-envelope: "\f192";
+    $font-Flaticon-mailbox: "\f193";
+    $font-Flaticon-inbox: "\f194";
+    $font-Flaticon-chat-8: "\f195";
+    $font-Flaticon-chat-7: "\f196";
+    $font-Flaticon-chat-6: "\f197";
+    $font-Flaticon-chat-5: "\f198";
+    $font-Flaticon-chat-4: "\f199";
+    $font-Flaticon-chat-3: "\f19a";
+    $font-Flaticon-chat-2: "\f19b";
+    $font-Flaticon-chat-1: "\f19c";
+    $font-Flaticon-chat: "\f19d";
+    $font-Flaticon-archive: "\f19e";
+    $font-Flaticon-diagram: "\f19f";
+    $font-Flaticon-graph-2: "\f1a0";
+    $font-Flaticon-graph-1: "\f1a1";
+    $font-Flaticon-graph: "\f1a2";
+    $font-Flaticon-chart-pie: "\f1a3";
+    $font-Flaticon-presentation: "\f1a4";
+    $font-Flaticon-store: "\f1a5";
+    $font-Flaticon-coins: "\f1a6";
+    $font-Flaticon-credit-card-1: "\f1a7";
+    $font-Flaticon-credit-card: "\f1a8";
+    $font-Flaticon-cart-1: "\f1a9";
+    $font-Flaticon-cart: "\f1aa";
+    $font-Flaticon-price-tag: "\f1ab";
+    $font-Flaticon-box: "\f1ac";
+    $font-Flaticon-right-arrow-4: "\f1ad";
+    $font-Flaticon-left-arrow-4: "\f1ae";
+    $font-Flaticon-up-arrow-3: "\f1af";
+    $font-Flaticon-download-1: "\f1b0";
+    $font-Flaticon-down-arrow-3: "\f1b1";
+    $font-Flaticon-up-arrow-2: "\f1b2";
+    $font-Flaticon-left-arrow-3: "\f1b3";
+    $font-Flaticon-right-arrow-3: "\f1b4";
+    $font-Flaticon-down-arrow-2: "\f1b5";
+    $font-Flaticon-arrows: "\f1b6";
+    $font-Flaticon-left-arrow-2: "\f1b7";
+    $font-Flaticon-right-arrow-2: "\f1b8";
+    $font-Flaticon-upward: "\f1b9";
+    $font-Flaticon-download: "\f1ba";
+    $font-Flaticon-back: "\f1bb";
+    $font-Flaticon-next: "\f1bc";
+    $font-Flaticon-up-arrow-1: "\f1bd";
+    $font-Flaticon-down-arrow-1: "\f1be";
+    $font-Flaticon-left-arrow-1: "\f1bf";
+    $font-Flaticon-right-arrow-1: "\f1c0";
+    $font-Flaticon-up-arrow: "\f1c1";
+    $font-Flaticon-down-arrow: "\f1c2";
+    $font-Flaticon-left-arrow: "\f1c3";
+    $font-Flaticon-right-arrow: "\f1c4";
+    $font-Flaticon-expand: "\f1c5";
+    $font-Flaticon-repeat: "\f1c6";
