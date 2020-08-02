@@ -38,3 +38,18 @@ def remove_customer(request):
         return redirect('datatables')
     else:
         return redirect('datatables')
+
+def edit_customer(request):
+    if request.method == "POST":
+        customer_id = request.POST['id']
+        customer = Customer.objects.get(pk=customer_id)
+        customer.name = request.POST['customer']
+        customer.address = request.POST['address']
+        customer.mobile_no = request.POST['mobile']
+        customer.city = request.POST['city']
+        customer.state = request.POST['state']
+        customer.gst_no = request.POST['gst']
+        customer.save()
+        return redirect('datatables')
+    else:
+        return redirect('datatables')
