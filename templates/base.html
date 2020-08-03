@@ -3,16 +3,16 @@
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Tables - Atlantis Lite Bootstrap 4 Admin Dashboard</title>
+	<title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="{% static 'img/icon.ico' %}" type="image/x-icon"/>
-	
+
 	<!-- Fonts and icons -->
 	<script src="{% static 'js/plugin/webfont/webfont.min.js' %}"></script>
 	<script>
 		WebFont.load({
 			google: {"families":["Lato:300,400,700,900"]},
-			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../../assets/css/fonts.min.css']},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
 			active: function() {
 				sessionStorage.fonts = true;
 			}
@@ -22,11 +22,9 @@
 	<!-- CSS Files -->
 	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 	<link rel="stylesheet" href="{% static 'css/atlantis.min.css' %}">
+
 	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<link rel="stylesheet" href="{% static 'assets/css/demo.css' %}">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/demo.css' %}">
 </head>
 <body>
 	<div class="wrapper">
@@ -34,7 +32,7 @@
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="blue">
 				
-				<a href="{% static 'index.html' %}" class="logo">
+				<a href="index.html" class="logo">
 					<img src="{% static 'img/logo.svg' %}" alt="navbar brand" class="navbar-brand">
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -153,45 +151,47 @@
 									<div class="dropdown-title">You have 4 new notification</div>
 								</li>
 								<li>
-									<div class="notif-center">
-										<a href="#">
-											<div class="notif-icon notif-primary"> <i class="fa fa-user-plus"></i> </div>
-											<div class="notif-content">
-												<span class="block">
-													New user registered
-												</span>
-												<span class="time">5 minutes ago</span> 
-											</div>
-										</a>
-										<a href="#">
-											<div class="notif-icon notif-success"> <i class="fa fa-comment"></i> </div>
-											<div class="notif-content">
-												<span class="block">
-													Rahmad commented on Admin
-												</span>
-												<span class="time">12 minutes ago</span> 
-											</div>
-										</a>
-										<a href="#">
-											<div class="notif-img"> 
-												<img src="{% static 'img/profile2.jpg' %}" alt="Img Profile">
-											</div>
-											<div class="notif-content">
-												<span class="block">
-													Reza send messages to you
-												</span>
-												<span class="time">12 minutes ago</span> 
-											</div>
-										</a>
-										<a href="#">
-											<div class="notif-icon notif-danger"> <i class="fa fa-heart"></i> </div>
-											<div class="notif-content">
-												<span class="block">
-													Farrah liked Admin
-												</span>
-												<span class="time">17 minutes ago</span> 
-											</div>
-										</a>
+									<div class="notif-scroll scrollbar-outer">
+										<div class="notif-center">
+											<a href="#">
+												<div class="notif-icon notif-primary"> <i class="fa fa-user-plus"></i> </div>
+												<div class="notif-content">
+													<span class="block">
+														New user registered
+													</span>
+													<span class="time">5 minutes ago</span> 
+												</div>
+											</a>
+											<a href="#">
+												<div class="notif-icon notif-success"> <i class="fa fa-comment"></i> </div>
+												<div class="notif-content">
+													<span class="block">
+														Rahmad commented on Admin
+													</span>
+													<span class="time">12 minutes ago</span> 
+												</div>
+											</a>
+											<a href="#">
+												<div class="notif-img"> 
+													<img src="{% static 'img/profile2.jpg' %}" alt="Img Profile">
+												</div>
+												<div class="notif-content">
+													<span class="block">
+														Reza send messages to you
+													</span>
+													<span class="time">12 minutes ago</span> 
+												</div>
+											</a>
+											<a href="#">
+												<div class="notif-icon notif-danger"> <i class="fa fa-heart"></i> </div>
+												<div class="notif-content">
+													<span class="block">
+														Farrah liked Admin
+													</span>
+													<span class="time">17 minutes ago</span> 
+												</div>
+											</a>
+										</div>
 									</div>
 								</li>
 								<li>
@@ -265,7 +265,7 @@
 											<div class="avatar-lg"><img src="{% static 'img/profile.jpg' %}" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
 												<h4>Hizrian</h4>
-												<p class="text-muted">hello@example.com</p><a href="{% static 'profile.html' %}" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+												<p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
 											</div>
 										</div>
 									</li>
@@ -287,9 +287,9 @@
 			</nav>
 			<!-- End Navbar -->
 		</div>
+
 		<!-- Sidebar -->
-		<div class="sidebar sidebar-style-2">
-			
+		<div class="sidebar sidebar-style-2">			
 			<div class="sidebar-wrapper scrollbar scrollbar-inner">
 				<div class="sidebar-content">
 					<div class="user">
@@ -297,7 +297,7 @@
 							<img src="{% static 'img/profile.jpg' %}" alt="..." class="avatar-img rounded-circle">
 						</div>
 						<div class="info">
-							<a data-toggle="collapse" href="{% static '#collapseExample' %}" aria-expanded="true">
+							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 								<span>
 									Hizrian
 									<span class="user-level">Administrator</span>
@@ -309,17 +309,17 @@
 							<div class="collapse in" id="collapseExample">
 								<ul class="nav">
 									<li>
-										<a href="{% static '#profile' %}">
+										<a href="#profile">
 											<span class="link-collapse">My Profile</span>
 										</a>
 									</li>
 									<li>
-										<a href="{% static '#edit' %}">
+										<a href="#edit">
 											<span class="link-collapse">Edit Profile</span>
 										</a>
 									</li>
 									<li>
-										<a href="{% static '#settings' %}">
+										<a href="#settings">
 											<span class="link-collapse">Settings</span>
 										</a>
 									</li>
@@ -328,8 +328,8 @@
 						</div>
 					</div>
 					<ul class="nav nav-primary">
-						<li class="nav-item">
-							<a data-toggle="collapse" href="{% static '#dashboard' %}" class="collapsed" aria-expanded="false">
+						<li class="nav-item active">
+							<a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
 								<i class="fas fa-home"></i>
 								<p>Dashboard</p>
 								<span class="caret"></span>
@@ -337,12 +337,12 @@
 							<div class="collapse" id="dashboard">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="{% static 'demo1/index.html' %}">
+										<a href="../demo1/index.html">
 											<span class="sub-item">Dashboard 1</span>
 										</a>
 									</li>
 									<li>
-										<a href="{% static 'demo2/index.html' %}">
+										<a href="../demo2/index.html">
 											<span class="sub-item">Dashboard 2</span>
 										</a>
 									</li>
@@ -356,7 +356,7 @@
 							<h4 class="text-section">Components</h4>
 						</li>
 						<li class="nav-item">
-							<a data-toggle="collapse" href="{% static '#base' %}">
+							<a data-toggle="collapse" href="#base">
 								<i class="fas fa-layer-group"></i>
 								<p>Base</p>
 								<span class="caret"></span>
@@ -364,52 +364,52 @@
 							<div class="collapse" id="base">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="{% static 'components/avatars.html' %}">
+										<a href="components/avatars.html">
 											<span class="sub-item">Avatars</span>
 										</a>
 									</li>
 									<li>
-										<a href="{% static 'components/buttons.html' %}">
+										<a href="components/buttons.html">
 											<span class="sub-item">Buttons</span>
 										</a>
 									</li>
 									<li>
-										<a href="{% static 'components/gridsystem.html' %}">
+										<a href="components/gridsystem.html">
 											<span class="sub-item">Grid System</span>
 										</a>
 									</li>
 									<li>
-										<a href="components/panels.html' %}">
+										<a href="components/panels.html">
 											<span class="sub-item">Panels</span>
 										</a>
 									</li>
 									<li>
-										<a href="{% static 'components/notifications.html' %}">
+										<a href="components/notifications.html">
 											<span class="sub-item">Notifications</span>
 										</a>
 									</li>
 									<li>
-										<a href="{% static 'components/sweetalert.html' %}">
+										<a href="components/sweetalert.html">
 											<span class="sub-item">Sweet Alert</span>
 										</a>
 									</li>
 									<li>
-										<a href="{% static 'components/font-awesome-icons.html' %}">
+										<a href="components/font-awesome-icons.html">
 											<span class="sub-item">Font Awesome Icons</span>
 										</a>
 									</li>
 									<li>
-										<a href="{% static 'components/simple-line-icons.html' %}">
+										<a href="components/simple-line-icons.html">
 											<span class="sub-item">Simple Line Icons</span>
 										</a>
 									</li>
 									<li>
-										<a href="{% static 'components/flaticons.html' %}">
+										<a href="components/flaticons.html">
 											<span class="sub-item">Flaticons</span>
 										</a>
 									</li>
 									<li>
-										<a href="{% static 'components/typography.html' %}">
+										<a href="components/typography.html">
 											<span class="sub-item">Typography</span>
 										</a>
 									</li>
@@ -417,7 +417,7 @@
 							</div>
 						</li>
 						<li class="nav-item">
-							<a data-toggle="collapse" href="{% static '#sidebarLayouts' %}">
+							<a data-toggle="collapse" href="#sidebarLayouts">
 								<i class="fas fa-th-list"></i>
 								<p>Sidebar Layouts</p>
 								<span class="caret"></span>
@@ -425,27 +425,27 @@
 							<div class="collapse" id="sidebarLayouts">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="{% static 'sidebar-style-1.html' %}">
+										<a href="sidebar-style-1.html">
 											<span class="sub-item">Sidebar Style 1</span>
 										</a>
 									</li>
 									<li>
-										<a href="{% static 'overlay-sidebar.html' %}">
+										<a href="overlay-sidebar.html">
 											<span class="sub-item">Overlay Sidebar</span>
 										</a>
 									</li>
 									<li>
-										<a href="{% static 'compact-sidebar.html' %}">
+										<a href="compact-sidebar.html">
 											<span class="sub-item">Compact Sidebar</span>
 										</a>
 									</li>
 									<li>
-										<a href="{% static 'static-sidebar.html' %}">
+										<a href="static-sidebar.html">
 											<span class="sub-item">Static Sidebar</span>
 										</a>
 									</li>
 									<li>
-										<a href="{% static 'icon-menu.html' %}">
+										<a href="icon-menu.html">
 											<span class="sub-item">Icon Menu</span>
 										</a>
 									</li>
@@ -453,7 +453,7 @@
 							</div>
 						</li>
 						<li class="nav-item">
-							<a data-toggle="collapse" href="{% static '#forms' %}">
+							<a data-toggle="collapse" href="#forms">
 								<i class="fas fa-pen-square"></i>
 								<p>Forms</p>
 								<span class="caret"></span>
@@ -461,28 +461,28 @@
 							<div class="collapse" id="forms">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="{% static 'forms/forms.html' %}">
+										<a href="forms/forms.html">
 											<span class="sub-item">Basic Form</span>
 										</a>
 									</li>
 								</ul>
 							</div>
 						</li>
-						<li class="nav-item active submenu">
-							<a data-toggle="collapse" href="{% static '#tables' %}">
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#tables">
 								<i class="fas fa-table"></i>
 								<p>Tables</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse show" id="tables">
+							<div class="collapse" id="tables">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="{% static 'tables/tables.html' %}">
+										<a href="{% url 'bill' %}">
 											<span class="sub-item">Basic Table</span>
 										</a>
 									</li>
-									<li class="active">
-										<a href="{% static 'tables/datatables.html' %}">
+									<li>
+										<a href="{% url 'datatables' %}">
 											<span class="sub-item">Datatables</span>
 										</a>
 									</li>
@@ -498,7 +498,7 @@
 							<div class="collapse" id="maps">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="{% static 'maps/jqvmap.html' %}">
+										<a href="maps/jqvmap.html">
 											<span class="sub-item">JQVMap</span>
 										</a>
 									</li>
@@ -514,12 +514,12 @@
 							<div class="collapse" id="charts">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="{% static 'charts/charts.html' %}">
+										<a href="charts/charts.html">
 											<span class="sub-item">Chart Js</span>
 										</a>
 									</li>
 									<li>
-										<a href="{% static 'charts/sparkline.html' %}">
+										<a href="charts/sparkline.html">
 											<span class="sub-item">Sparkline</span>
 										</a>
 									</li>
@@ -527,281 +527,82 @@
 							</div>
 						</li>
 						<li class="nav-item">
-							<a href="{% static 'widgets.html' %}">
+							<a href="widgets.html">
 								<i class="fas fa-desktop"></i>
 								<p>Widgets</p>
 								<span class="badge badge-success">4</span>
 							</a>
 						</li>
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#submenu">
+								<i class="fas fa-bars"></i>
+								<p>Menu Levels</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="submenu">
+								<ul class="nav nav-collapse">
+									<li>
+										<a data-toggle="collapse" href="#subnav1">
+											<span class="sub-item">Level 1</span>
+											<span class="caret"></span>
+										</a>
+										<div class="collapse" id="subnav1">
+											<ul class="nav nav-collapse subnav">
+												<li>
+													<a href="#">
+														<span class="sub-item">Level 2</span>
+													</a>
+												</li>
+												<li>
+													<a href="#">
+														<span class="sub-item">Level 2</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li>
+										<a data-toggle="collapse" href="#subnav2">
+											<span class="sub-item">Level 1</span>
+											<span class="caret"></span>
+										</a>
+										<div class="collapse" id="subnav2">
+											<ul class="nav nav-collapse subnav">
+												<li>
+													<a href="#">
+														<span class="sub-item">Level 2</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li>
+										<a href="#">
+											<span class="sub-item">Level 1</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="mx-4 mt-2">
+							<a href="http://themekita.com/atlantis-bootstrap-dashboard.html" class="btn btn-primary btn-block"><span class="btn-label mr-2"> <i class="fa fa-heart"></i> </span>Buy Pro</a> 
+						</li>
 					</ul>
 				</div>
 			</div>
 		</div>
+		<!-- End Sidebar -->
+
 		<div class="main-panel">
 			<div class="content">
-				<div class="page-inner">
-					<div class="page-header">
-						<h4 class="page-title">CUSTOMER DETAILS</h4>
-						<ul class="breadcrumbs">
-							<li class="nav-home">
-								<a href="#">
-									<i class="flaticon-home"></i>
-								</a>
-							</li>
-							<li class="separator">
-								<i class="flaticon-right-arrow"></i>
-							</li>
-							
-							<li class="separator">
-								<i class="flaticon-right-arrow"></i>
-							</li>
-							
-						</ul>
-					</div>
-					
-						
-						
-
-						<div class="col-md-12">
-							<div class="card">
-								<div class="card-header">
-									<div class="d-flex align-items-center">
-										<h4 class="card-title">Add Customer Name</h4>
-										<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
-											<i class="fa fa-plus"></i>
-											Add Customer 
-										</button>
-									</div>
-								</div>
-								<div class="card-body">
-									<!-- Modal -->
-									<div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
-										<div class="modal-dialog" role="document">
-											<div class="modal-content">
-												<div class="modal-header no-bd">
-													<h5 class="modal-title">
-														<span class="fw-mediumbold">
-														New</span> 
-														<span class="fw-light">
-															Row
-														</span>
-													</h5>
-													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-														<span aria-hidden="true">&times;</span>
-													</button>
-												</div>
-												<div class="modal-body">
-													<p class="small">Create a new row using this form, make sure you fill them all</p>
-													<form method="POST", action="{% url 'add_customer' %}">
-														{% csrf_token %}
-														<div class="row">
-															<div class="col-sm-12">
-																<div class="form-group form-group-default">
-																	<label>Name</label>
-																	<input id="addName" type="text" class="form-control" placeholder="fill name" name="customer">
-																</div>
-															</div>
-															<div class="col-md-6 pr-0">
-																<div class="form-group form-group-default">
-																	<label>Address</label>
-																	<input id="addAddress" type="text"  class="form-control" placeholder="fill address" name="address" width='350' style="word-wrap:break-word; table-layout:fixed;">
-																</div>
-															</div>
-															<div class="col-md-6">
-																<div class="form-group form-group-default">
-																	<label>Mobile No</label>
-																	<input id="addMobile" type="number" class="form-control" placeholder="fill mobile" name="mobile" style="word-wrap:break-word; table-layout:fixed;">
-																</div>
-															</div>
-															<div class="col-md-6">
-																<div class="form-group form-group-default">
-																	<label>City</label>
-																	<input id="addCity" type="text" class="form-control" placeholder="fill city" name="city">
-																</div>
-															</div>
-															<div class="col-md-6">
-																<div class="form-group form-group-default">
-																	<label>State </label>
-																	<input id="addState" type="text" class="form-control" placeholder="fill state" name="state">
-																</div>
-															</div>
-															<div class="col-md-6">
-																<div class="form-group form-group-default">
-																	<label>GST No</label>
-																	<input id="addGst" type="text" class="form-control" placeholder="fill gst" name="gst">
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="modal-footer no-bd">
-														<button type="submit" id="addRowButton" class="btn btn-primary">Add</button>
-														<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-													</div>
-												</div>
-											</form>
-										</div>
-									</div>
-
-									<div class="table-responsive">
-										<table id="add-row" class="display table table-striped table-hover" >
-											<thead>
-												<tr>
-													<th>Name</th>
-													<th>Address</th>
-													<th>Mobile No</th>
-													<th>City </th>
-													<th>State</th>
-													<th>Gst No</th>
-													<th style="width: 10%">Action</th>
-												</tr>
-											</thead>
-											<tfoot>
-												<tr>
-													<th>Name</th>
-													<th>Address</th>
-													<th>Mobile No</th>
-													<th>City </th>
-													<th>State</th>
-													<th>Gst No</th>
-												</tr>
-											</tfoot>
-											<tbody>
-												{% for customer in customers %}
-												<tr>
-													<td>{{ customer.name }}</td>
-													<td>{{ customer.address }}</td>
-													<td>{{ customer.mobile_no }}</td>
-													<td>{{ customer.city }}</td>
-													<td>{{ customer.state }}</td>
-													<td>{{ customer.gst_no }}</td>
-
-													<td>
-														<div class="form-button-action">
-															<button class="btn btn-link btn-primary btn-lg" data-toggle="modal" data-target="#editRowModal">
-																<i class="fa fa-edit fa-lg"></i>
-														
-															</button>
-															<div class="modal fade" id="editRowModal" tabindex="-1" role="dialog" aria-hidden="true">
-																<div class="modal-dialog" role="document">
-																	<div class="modal-content">
-																		<div class="modal-header no-bd">
-																			<h5 class="modal-title">
-																				<span class="fw-mediumbold">
-																				Edit</span> 
-																				<span class="fw-light">
-																					Row
-																				</span>
-																			</h5>
-																			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																				<span aria-hidden="true">&times;</span>
-																			</button>
-																		</div>
-																		<div class="modal-body">
-																			<p class="small">Edit row using this form, make sure you edit them properly</p>
-																			<form method="POST", action="{% url 'edit_customer' %}">
-																				{% csrf_token %}
-																				<div class="row">
-																					<div class="col-sm-12">
-																						<input type="hidden" name="id" value="{{ customer.pk }}">
-																						<div class="form-group form-group-default">
-																							<label>Name</label>
-																							<input id="editName" type="text" class="form-control" placeholder="fill name" name="customer" value="{{ customer.name }}">
-																						</div>
-																					</div>
-																					<div class="col-md-6 pr-0">
-																						<div class="form-group form-group-default">
-																							<label>Address</label>
-																							<input id="editAddress" type="text" class="form-control" placeholder="fill address" name="address" value="{{ customer.address }}">
-																						</div>
-																					</div>
-																					<div class="col-md-6">
-																						<div class="form-group form-group-default">
-																							<label>Mobile No</label>
-																							<input id="editMobile" type="text" class="form-control" placeholder="fill mobile" name="mobile" value="{{ customer.mobile_no }}">
-																						</div>
-																					</div>
-																					<div class="col-md-6">
-																						<div class="form-group form-group-default">
-																							<label>City</label>
-																							<input id="editCity" type="text" class="form-control" placeholder="fill city" name="city" value="{{ customer.city }}">
-																						</div>
-																					</div>
-																					<div class="col-md-6">
-																						<div class="form-group form-group-default">
-																							<label>State </label>
-																							<input id="editState" type="text" class="form-control" placeholder="fill state" name="state" value="{{ customer.state }}">
-																						</div>
-																					</div>
-																					<div class="col-md-6">
-																						<div class="form-group form-group-default">
-																							<label>GST No</label>
-																							<input id="editGst" type="text" class="form-control" placeholder="fill gst" name="gst" value="{{ customer.gst_no }}">
-																						</div>
-																					</div>
-																				</div>
-																			</div>
-																			<div class="modal-footer no-bd">
-																				<button type="submit" id="addRowButton" class="btn btn-primary">Update</button>
-																				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-																			</div>
-																		</div>
-																	</form>
-																</div>
-															</div>
-															<button class="btn btn-link btn-danger" data-original-title="Remove" data-toggle="modal" data-target="#deleteRowModal">
-																<i class="fa fa-times fa-2x"></i>
-													
-															</button>
-
-															<div class="modal fade" id="deleteRowModal" tabindex="-1" role="dialog" aria-hidden="true">
-																<div class="modal-dialog" role="document">
-																	<div class="modal-content">
-																		<div class="modal-header no-bd">
-																			<h5 class="modal-title">
-																				<span class="fw-mediumbold">
-																				Delete</span> 
-																				<span class="fw-light">
-																					Customer
-																				</span>
-																			</h5>
-																			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																				<span aria-hidden="true">&times;</span>
-																			</button>
-																		</div>
-																		<div class="modal-body">
-																			<form method="POST", action="{% url 'remove_customer' %}">
-																				{% csrf_token %}
-																				<p>Note that removing is permanent and you will not be able to restore. Do you still want to delete?</p>
-																			</div>
-																			<div class="modal-footer no-bd">
-																				<input type="hidden" name="id" value="{{ customer.pk }}">
-																				<button type="submit" id="addRowButton" class="btn btn-primary">Yes</button>
-																				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-																			</div>
-																		</div>
-																	</form>
-																</div>
-															</div>
-																
-														</div>
-													</td>
-												</tr>
-												{% endfor %}
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+                {% block content %}{% endblock %}
 			</div>
 			<footer class="footer">
 				<div class="container-fluid">
 					<nav class="pull-left">
 						<ul class="nav">
 							<li class="nav-item">
-								<a class="nav-link" href="{% static 'https://www.themekita.com' %}">
+								<a class="nav-link" href="https://www.themekita.com">
 									ThemeKita
 								</a>
 							</li>
@@ -842,7 +643,7 @@
 							<button type="button" class="changeLogoHeaderColor" data-color="white"></button>
 							<br/>
 							<button type="button" class="changeLogoHeaderColor" data-color="dark2"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="blue2"></button>
+							<button type="button" coomlass="changeLogoHeaderColor" data-color="blue2"></button>
 							<button type="button" class="changeLogoHeaderColor" data-color="purple2"></button>
 							<button type="button" class="changeLogoHeaderColor" data-color="light-blue2"></button>
 							<button type="button" class="changeLogoHeaderColor" data-color="green2"></button>
@@ -900,64 +701,135 @@
 	<script src="{% static 'js/core/jquery.3.2.1.min.js' %}"></script>
 	<script src="{% static 'js/core/popper.min.js' %}"></script>
 	<script src="{% static 'js/core/bootstrap.min.js' %}"></script>
+
 	<!-- jQuery UI -->
 	<script src="{% static 'js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js' %}"></script>
 	<script src="{% static 'js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js' %}"></script>
-	
+
 	<!-- jQuery Scrollbar -->
 	<script src="{% static 'js/plugin/jquery-scrollbar/jquery.scrollbar.min.js' %}"></script>
+
+
+	<!-- Chart JS -->
+	<script src="{% static 'js/plugin/chart.js/chart.min.js' %}"></script>
+
+	<!-- jQuery Sparkline -->
+	<script src="{% static 'js/plugin/jquery.sparkline/jquery.sparkline.min.js' %}"></script>
+
+	<!-- Chart Circle -->
+	<script src="{% static 'js/plugin/chart-circle/circles.min.js' %}"></script>
+
 	<!-- Datatables -->
 	<script src="{% static 'js/plugin/datatables/datatables.min.js' %}"></script>
+
+	<!-- Bootstrap Notify -->
+	<script src="{% static 'js/plugin/bootstrap-notify/bootstrap-notify.min.js' %}"></script>
+
+	<!-- jQuery Vector Maps -->
+	<script src="{% static 'js/plugin/jqvmap/jquery.vmap.min.js' %}"></script>
+	<script src="{% static 'js/plugin/jqvmap/maps/jquery.vmap.world.js' %}"></script>
+
+	<!-- Sweet Alert -->
+	<script src="{% static 'js/plugin/sweetalert/sweetalert.min.js' %}"></script>
+
 	<!-- Atlantis JS -->
 	<script src="{% static 'js/atlantis.min.js' %}"></script>
+
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
-	<script src="{% static 'js/setting-demo2.js' %}"></script>
-	<script >
-		$(document).ready(function() {
-			$('#basic-datatables').DataTable({
-			});
+	<script src="{% static 'js/setting-demo.js' %}"></script>
+	<script src="{% static 'js/demo.js' %}"></script>
+	<script>
+		Circles.create({
+			id:'circles-1',
+			radius:45,
+			value:60,
+			maxValue:100,
+			width:7,
+			text: 5,
+			colors:['#f1f1f1', '#FF9E27'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		})
 
-			$('#multi-filter-select').DataTable( {
-				"pageLength": 5,
-				initComplete: function () {
-					this.api().columns().every( function () {
-						var column = this;
-						var select = $('<select class="form-control"><option value=""></option></select>')
-						.appendTo( $(column.footer()).empty() )
-						.on( 'change', function () {
-							var val = $.fn.dataTable.util.escapeRegex(
-								$(this).val()
-								);
+		Circles.create({
+			id:'circles-2',
+			radius:45,
+			value:70,
+			maxValue:100,
+			width:7,
+			text: 36,
+			colors:['#f1f1f1', '#2BB930'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		})
 
-							column
-							.search( val ? '^'+val+'$' : '', true, false )
-							.draw();
-						} );
+		Circles.create({
+			id:'circles-3',
+			radius:45,
+			value:40,
+			maxValue:100,
+			width:7,
+			text: 12,
+			colors:['#f1f1f1', '#F25961'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		})
 
-						column.data().unique().sort().each( function ( d, j ) {
-							select.append( '<option value="'+d+'">'+d+'</option>' )
-						} );
-					} );
-				}
-			});
+		var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
 
-			// Add Row
-			$('#add-row').DataTable({
-				"pageLength": 5,
-			});
+		var mytotalIncomeChart = new Chart(totalIncomeChart, {
+			type: 'bar',
+			data: {
+				labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
+				datasets : [{
+					label: "Total Income",
+					backgroundColor: '#ff9e27',
+					borderColor: 'rgb(23, 125, 255)',
+					data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
+				}],
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				legend: {
+					display: false,
+				},
+				scales: {
+					yAxes: [{
+						ticks: {
+							display: false //this will remove only the label
+						},
+						gridLines : {
+							drawBorder: false,
+							display : false
+						}
+					}],
+					xAxes : [ {
+						gridLines : {
+							drawBorder: false,
+							display : false
+						}
+					}]
+				},
+			}
+		});
 
-			var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
-
-			$('#addRowButton').click(function() {
-				$('#add-row').dataTable().fnAddData([
-					$("#addName").val(),
-					$("#addPosition").val(),
-					$("#addOffice").val(),
-					action
-					]);
-				$('#addRowModal').modal('hide');
-
-			});
+		$('#lineChart').sparkline([105,103,123,100,95,105,115], {
+			type: 'line',
+			height: '70',
+			width: '100%',
+			lineWidth: '2',
+			lineColor: '#ffa534',
+			fillColor: 'rgba(255, 165, 52, .14)'
 		});
 	</script>
 </body>

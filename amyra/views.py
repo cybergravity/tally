@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
-from .models import Customer
+from django.template import loader
+from django.http import HttpResponse
+from .models import Destination ,Item ,Customer,Calculation
 
 
 # Create your views here.
@@ -53,3 +55,7 @@ def edit_customer(request):
         return redirect('datatables')
     else:
         return redirect('datatables')
+
+
+def bill(request):
+    return render(request, 'bill.html')
