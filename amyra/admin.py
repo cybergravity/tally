@@ -3,10 +3,8 @@ from .models import Customer
 
 
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'address', 'city')
+    list_display = ('name', 'address', 'city', 'state', 'mobile_no', 'gst_no')
     search_fields = ('name',)
-    list_display_links = ('address',)
-    list_editable = ('name',)
     list_filter = ('city',)
     fieldsets = (
         (None, {
