@@ -8,7 +8,7 @@ class CustomerAdmin(admin.ModelAdmin):
     list_filter = ('city',)
     fieldsets = (
         (None, {
-            'fields': (('name', 'address'), ('mobile_no', 'city'), ('state', 'gst_no'))
+            'fields': (('name', 'address', 'mobile_no'), ('city', 'state'), 'gst_no')
         }),
     )
 
