@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.template import loader
 from django.http import HttpResponse
-from .models import Destination ,Item ,Customer,Calculation
+from .models import Customer
 
 
 # Create your views here.
