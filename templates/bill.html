@@ -2,299 +2,352 @@
 {% load static %}
 {% block content %}
 <div class="page-inner">
-	<div class="page-header">
-		<h4 class="page-title">ALL INVOICE DETAILS</h4>
-		<ul class="breadcrumbs">
-			<li class="nav-home">
-				<a href="#">
-					<i class="flaticon-home"></i>
-				</a>
-			</li>
-			<li class="separator">
-				<i class="flaticon-right-arrow"></i>
-			</li>
-			
-			<li class="separator">
-				<i class="flaticon-right-arrow"></i>
-			</li>
-			
-		</ul>
-	</div>
-	
-		
-		
+    <div class="page-header">
+        <h4 class="page-title">ALL INVOICE DETAILS</h4>
+        <ul class="breadcrumbs">
+            <li class="nav-home">
+                <a href="#">
+                    <i class="flaticon-home"></i>
+                </a>
+            </li>
+            <li class="separator">
+                <i class="flaticon-right-arrow"></i>
+            </li>
 
-		<div class="col-md-12">
-			<div class="card">
-				<div class="card-header">
-					<div class="d-flex align-items-center">
-						<h4 class="card-title">Add Customer Name</h4>
-						<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
-							<i class="fa fa-plus"></i>
-							Add Invoice
-						</button>
-					</div>
-				</div>
-				<div class="card-body">
-					<!-- Modal -->
-					<div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header no-bd">
-									<h5 class="modal-title">
-										<span class="fw-mediumbold">
-										New</span> 
-										<span class="fw-light">
-											Row
-										</span>
-									</h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									<p class="small">Create a new row using this form, make sure you fill them all</p>
-									<form method="POST", action="{% url 'add_customer' %}">
-										{% csrf_token %}
-										<div class="row">
-											<div class="col-sm-12">
-												<div class="form-group form-group-default">
-													<label>Customer</label>
-													<input id="addCustomer" type="text" class="form-control" placeholder="fill name" name="customer">
-												</div>
-											</div>
-											<div class="col-md-6 pr-0">
-												<div class="form-group form-group-default">
-													<label>Bill Type </label>
-													<input id="addAddress" type="text"  class="form-control" placeholder="fill address" name="address" width='350' style="word-wrap:break-word; table-layout:fixed;">
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group form-group-default">
-													<label>HSN Code</label>
-													<input id="addMobile" type="number" class="form-control" placeholder="fill mobile" name="mobile" style="word-wrap:break-word; table-layout:fixed;">
-												</div>
-											</div>
-											
-											<div class="col-md-6">
-												<div class="form-group form-group-default">
-													<label>Invoice NO </label>
-													<input id="addState" type="text" class="form-control" placeholder="fill state" name="state">
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group form-group-default">
-													<label>Dated</label>
-													<input id="addGst" type="text" class="form-control" placeholder="fill gst" name="gst">
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group form-group-default">
-													<label>Challen No</label>
-													<input id="addGst" type="text" class="form-control" placeholder="fill gst" name="gst">
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group form-group-default">
-													<label>Date</label>
-													<input id="addGst" type="text" class="form-control" placeholder="fill gst" name="gst">
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group form-group-default">
-													<label>Transport</label>
-													<input id="addGst" type="text" class="form-control" placeholder="fill gst" name="gst">
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group form-group-default">
-													<label>Vehicle NO</label>
-													<input id="addGst" type="text" class="form-control" placeholder="fill gst" name="gst">
-												</div>
-												
-											</div>
-										</div>
-									</div>
-									<div class="modal-footer no-bd">
-										<button type="submit" id="addRowButton" class="btn btn-primary">Add</button>
-										<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
+            <li class="separator">
+                <i class="flaticon-right-arrow"></i>
+            </li>
+        </ul>
+    </div>
 
-					<div class="table-responsive">
-						<table id="add-row" class="display table table-striped table-hover" >
-							<thead>
-								<tr>
-									<th>Name</th>
-									<th>Address</th>
-									<th>Mobile No</th>
-									<th>City </th>
-									<th>State</th>
-									<th>Gst No</th>
-									<th style="width: 10%">Action</th>
-								</tr>
-							</thead>
-							<tfoot>
-								<tr>
-									<th>Name</th>
-									<th>Address</th>
-									<th>Mobile No</th>
-									<th>City </th>
-									<th>State</th>
-									<th>Gst No</th>
-								</tr>
-							</tfoot>
-							<tbody>
-								{% for customer in customers %}
-								<tr>
-									<td>{{ customer.name }}</td>
-									<td>{{ customer.address }}</td>
-									<td>{{ customer.mobile_no }}</td>
-									<td>{{ customer.city }}</td>
-									<td>{{ customer.state }}</td>
-									<td>{{ customer.gst_no }}</td>
-
-									<td>
-										<div class="form-button-action">
-											<button class="btn btn-link btn-primary btn-lg" data-toggle="modal" data-target="#editRowModal">
-												<i class="fa fa-edit fa-lg"></i>
-										
-											</button>
-											<div class="modal fade" id="editRowModal" tabindex="-1" role="dialog" aria-hidden="true">
-												<div class="modal-dialog modal-lg" role="document">
-													<div class="modal-content">
-														<div class="modal-header no-bd">
-															<h5 class="modal-title">
-																<span class="fw-mediumbold">
-																Edit</span> 
-																<span class="fw-light">
-																	Row
-																</span>
-															</h5>
-															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-														</div>
-														<div class="modal-body">
-															<p class="small">Edit row using this form, make sure you edit them properly</p>
-															<form method="POST", action="{% url 'edit_customer' %}">
-																{% csrf_token %}
-																<div class="row">
-																	<div class="col-sm-12">
-																		<input type="hidden" name="id" value="{{ customer.pk }}">
-																		<div class="form-group form-group-default">
-																			<label>Name</label>
-																			<input id="editName" type="text" class="form-control" placeholder="fill name" name="customer" value="{{ customer.name }}">
-																		</div>
-																	</div>
-																	<div class="col-md-6 pr-0">
-																		<div class="form-group form-group-default">
-																			<label>Address</label>
-																			<input id="editAddress" type="text" class="form-control" placeholder="fill address" name="address" value="{{ customer.address }}">
-																		</div>
-																	</div>
-																	<div class="col-md-6">
-																		<div class="form-group form-group-default">
-																			<label>Mobile No</label>
-																			<input id="editMobile" type="text" class="form-control" placeholder="fill mobile" name="mobile" value="{{ customer.mobile_no }}">
-																		</div>
-																	</div>
-																	<div class="col-md-6">
-																		<div class="form-group form-group-default">
-																			<label>City</label>
-																			<input id="editCity" type="text" class="form-control" placeholder="fill city" name="city" value="{{ customer.city }}">
-																		</div>
-																	</div>
-																	<div class="col-md-6">
-																		<div class="form-group form-group-default">
-																			<label>State </label>
-																			<input id="editState" type="text" class="form-control" placeholder="fill state" name="state" value="{{ customer.state }}">
-																		</div>
-																	</div>
-																	<div class="col-md-6">
-																		<div class="form-group form-group-default">
-																			<label>GST No</label>
-																			<input id="editGst" type="text" class="form-control" placeholder="fill gst" name="gst" value="{{ customer.gst_no }}">
-																		</div>
-																	</div>
-																</div>
-                                                                			<table class="inventory">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th><span contenteditable>Item</span></th>
-                                                                                        <th><span contenteditable>Description</span></th>
-                                                                                        <th><span contenteditable>Rate</span></th>
-                                                                                        <th><span contenteditable>Quantity</span></th>
-                                                                                        <th><span contenteditable>Price</span></th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <td><a class="cut">-</a><span contenteditable>Front End Consultation</span></td>
-                                                                                        <td><span contenteditable>Experience Review</span></td>
-                                                                                        <td><span data-prefix>$</span><span contenteditable>150.00</span></td>
-                                                                                        <td><span contenteditable>4</span></td>
-                                                                                        <td><span data-prefix>$</span><span>600.00</span></td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-                                                                            <a class="add">+</a>
-															<div class="modal-footer no-bd">
-																<button type="submit" id="addRowButton" class="btn btn-primary">Update</button>
-																<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-															</div>
-													    </form>
-                                                        </div>
+    <div class="col-md-20">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex align-items-center">
+                    <h4 class="card-title">VIEW ALL INVOICE</h4>
+                    <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
+                        <i class="fa fa-plus"></i>
+                        Add Invoice
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <!-- Modal -->
+                <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header no-bd">
+                                <h5 class="modal-title">
+                                    <span class="fw-mediumbold"> New</span>
+                                    <span class="fw-light">
+                                        Row
+                                    </span>
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="small">Create a new row using this form, make sure you fill them all</p>
+                                <form method="POST" , action="{% url 'add_customer' %}">
+                                    {% csrf_token %}
+                                    <div id="jquery-script-menu">
+                                        <div class="jquery-script-center">
+                                            <ul>
+                                                <li><a href="https://www.jqueryscript.net/other/Dynamic-Invoice-Generator-Plugin-jQuery.html">Download This Plugin</a></li>
+                                                <li><a href="https://www.jqueryscript.net/">Back To jQueryScript.Net</a></li>
+                                            </ul>
+                                            <div class="jquery-script-ads">
+                                                <script type="text/javascript">
+                                                    <!--
+                                                    google_ad_client = "ca-pub-2783044520727903";
+                                                    /* jQuery_demo */
+                                                    google_ad_slot = "2780937993";
+                                                    google_ad_width = 728;
+                                                    google_ad_height = 90;
+                                                    //-->
+                                                </script>
+                                                <script type="text/javascript" src="https://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+                                            </div>
+                                            <div class="jquery-script-clear"></div>
+                                        </div>
+                                    </div>
+                                    <div class="container" style="margin-top: 150px;">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-md-12">
+                                                <div>
+                                                    <h2 class="text-center">jQuery Invoice Plugin Demo</h2>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-md-12">
+                                                <hr />
+                                                <div class="row">
+                                                    <div class="col-xs-6 col-md-6">
+                                                        <address>
+                                                            <strong>Billed To:</strong><br />
+                                                            Likhon Likh<br />
+                                                            122, Dhaka, Bangladesh<br />
+                                                        </address>
                                                     </div>
-												</div>
-											</div>
-											<button class="btn btn-link btn-danger" data-original-title="Remove" data-toggle="modal" data-target="#deleteRowModal">
-												<i class="fa fa-times fa-2x"></i>
-									
-											</button>
+                                                    <div class="col-xs-6 col-md-6 text-right">
+                                                        <address>
+                                                            <strong>Shipped To:</strong><br />
+                                                            Shishir<br />
+                                                            56, Dhaka, Bangladesh<br />
+                                                        </address>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-6 col-md-6">
+                                                        <address>
+                                                            <strong>Payment Method:</strong><br />
+                                                            Visa ending **** 1234<br />
+                                                            likh.deshi@gmail.com
+                                                        </address>
+                                                    </div>
+                                                    <div class="col-xs-6 col-md-6 text-right">
+                                                        <address>
+                                                            <strong>Order Date:</strong><br />
+                                                            Jan 05, 2017<br />
+                                                            <br />
+                                                            Order No: <strong>1234</strong>
+                                                        </address>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-											<div class="modal fade" id="deleteRowModal" tabindex="-1" role="dialog" aria-hidden="true">
-												<div class="modal-dialog" role="document">
-													<div class="modal-content">
-														<div class="modal-header no-bd">
-															<h5 class="modal-title">
-																<span class="fw-mediumbold">
-																Delete</span> 
-																<span class="fw-light">
-																	Customer
-																</span>
-															</h5>
-															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-														</div>
-														<div class="modal-body">
-															<form method="POST", action="{% url 'remove_customer' %}">
-																{% csrf_token %}
-																<p>Note that removing is permanent and you will not be able to restore. Do you still want to delete?</p>
-                                                                <div class="modal-footer no-bd">
-                                                                    <input type="hidden" name="id" value="{{ customer.pk }}">
-                                                                    <button type="submit" id="addRowButton" class="btn btn-primary">Yes</button>
-                                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered">
+                                                        <thead>
+                                                            <tr class="item-row">
+                                                                <th>Item</th>
+                                                                <th>Price</th>
+                                                                <th>Quantity</th>
+                                                                <th>Total</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr id="hiderow">
+                                                                <td colspan="4">
+                                                                    <a id="addRow" href="javascript:;" title="Add a row" class="btn btn-primary">Add a row</a>
+                                                                </td>
+                                                            </tr>
+                                                            <!-- Here should be the item row -->
+                                                            <!--<tr class="item-row">
+																		<td><input class="form-control item" placeholder="Item" type="text"></td>
+																		<td><input class="form-control price" placeholder="Price" type="text"></td>
+																		<td><input class="form-control qty" placeholder="Quantity" type="text"></td>
+																		<td><span class="total">0.00</span></td>
+																	</tr>-->
+                                                            <tr>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td class="text-right"><strong>Sub Total</strong></td>
+                                                                <td><span id="subtotal">0.00</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>Total Quantity: </strong><span id="totalQty" style="color: red; font-weight: bold;">0</span> Units</td>
+                                                                <td></td>
+                                                                <td class="text-right"><strong>Discount</strong></td>
+                                                                <td><input class="form-control" id="discount" value="0" type="text" /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td class="text-right"><strong>Shipping</strong></td>
+                                                                <td><input class="form-control" id="shipping" value="0" type="text" /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td class="text-right"><strong>Grand Total</strong></td>
+                                                                <td><span id="grandTotal">0</span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer no-bd">
+                                        <button type="submit" id="addRowButton" class="btn btn-primary">Add</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table id="add-row" class="display table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Mobile No</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Gst No</th>
+                                <th style="width: 10%;">Action</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Mobile No</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Gst No</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            {% for customer in customers %}
+                            <tr>
+                                <td>{{ customer.name }}</td>
+                                <td>{{ customer.address }}</td>
+                                <td>{{ customer.mobile_no }}</td>
+                                <td>{{ customer.city }}</td>
+                                <td>{{ customer.state }}</td>
+                                <td>{{ customer.gst_no }}</td>
+
+                                <td>
+                                    <div class="form-button-action">
+                                        <button class="btn btn-link btn-primary btn-lg" data-toggle="modal" data-target="#editRowModal">
+                                            <i class="fa fa-edit fa-lg"></i>
+                                        </button>
+                                        <div class="modal fade" id="editRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header no-bd">
+                                                        <h5 class="modal-title">
+                                                            <span class="fw-mediumbold"> Edit</span>
+                                                            <span class="fw-light">
+                                                                Row
+                                                            </span>
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p class="small">Edit row using this form, make sure you edit them properly</p>
+                                                        <form method="POST" , action="{% url 'edit_customer' %}">
+                                                            {% csrf_token %}
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <input type="hidden" name="id" value="{{ customer.pk }}" />
+                                                                    <div class="form-group form-group-default">
+                                                                        <label>Name</label>
+                                                                        <input id="editName" type="text" class="form-control" placeholder="fill name" name="customer" value="{{ customer.name }}" />
+                                                                    </div>
                                                                 </div>
-													        </form>
-                                                        </div>
+                                                                <div class="col-md-6 pr-0">
+                                                                    <div class="form-group form-group-default">
+                                                                        <label>Address</label>
+                                                                        <input id="editAddress" type="text" class="form-control" placeholder="fill address" name="address" value="{{ customer.address }}" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group form-group-default">
+                                                                        <label>Mobile No</label>
+                                                                        <input id="editMobile" type="text" class="form-control" placeholder="fill mobile" name="mobile" value="{{ customer.mobile_no }}" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group form-group-default">
+                                                                        <label>City</label>
+                                                                        <input id="editCity" type="text" class="form-control" placeholder="fill city" name="city" value="{{ customer.city }}" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group form-group-default">
+                                                                        <label>State </label>
+                                                                        <input id="editState" type="text" class="form-control" placeholder="fill state" name="state" value="{{ customer.state }}" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group form-group-default">
+                                                                        <label>GST No</label>
+                                                                        <input id="editGst" type="text" class="form-control" placeholder="fill gst" name="gst" value="{{ customer.gst_no }}" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <table class="inventory">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th><span contenteditable>Item</span></th>
+                                                                        <th><span contenteditable>Description</span></th>
+                                                                        <th><span contenteditable>Rate</span></th>
+                                                                        <th><span contenteditable>Quantity</span></th>
+                                                                        <th><span contenteditable>Price</span></th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td><a class="cut">-</a><span contenteditable>Front End Consultation</span></td>
+                                                                        <td><span contenteditable>Experience Review</span></td>
+                                                                        <td><span data-prefix>$</span><span contenteditable>150.00</span></td>
+                                                                        <td><span contenteditable>4</span></td>
+                                                                        <td><span data-prefix>$</span><span>600.00</span></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <a class="add">+</a>
+                                                            <div class="modal-footer no-bd">
+                                                                <button type="submit" id="addRowButton" class="btn btn-primary">Update</button>
+                                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </form>
                                                     </div>
-												</div>
-											</div>
-												
-										</div>
-									</td>
-								</tr>
-								{% endfor %}
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-link btn-danger" data-original-title="Remove" data-toggle="modal" data-target="#deleteRowModal">
+                                            <i class="fa fa-times fa-2x"></i>
+                                        </button>
+
+                                        <div class="modal fade" id="deleteRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header no-bd">
+                                                        <h5 class="modal-title">
+                                                            <span class="fw-mediumbold"> Delete</span>
+                                                            <span class="fw-light">
+                                                                Customer
+                                                            </span>
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form method="POST" , action="{% url 'remove_customer' %}">
+                                                            {% csrf_token %}
+                                                            <p>Note that removing is permanent and you will not be able to restore. Do you still want to delete?</p>
+                                                            <div class="modal-footer no-bd">
+                                                                <input type="hidden" name="id" value="{{ customer.pk }}" />
+                                                                <button type="submit" id="addRowButton" class="btn btn-primary">Yes</button>
+                                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

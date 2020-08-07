@@ -2,13 +2,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<script src="{% static 'https://code.jquery.com/jquery-git.js' %}"></script>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
+
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+	
 	<link rel="icon" href="{% static 'img/icon.ico' %}" type="image/x-icon"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %}">
+	<link href="{% static 'https://www.jqueryscript.net/css/jquerysctipttop.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/darkly/bootstrap.min.css' %}" rel="stylesheet">
+    
+	
 	<!-- Fonts and icons -->
 	<script src="{% static 'js/plugin/webfont/webfont.min.js' %}"></script>
+	
+	
+
 	<script>
 		WebFont.load({
 			google: {"families":["Lato:300,400,700,900"]},
@@ -694,8 +704,11 @@
 		</div>
 		<!-- End Custom template -->
 	</div>
+	
 	<!--   Core JS Files   -->
+	
 	<script src="{% static 'js/core/jquery.3.2.1.min.js' %}"></script>
+	
 	<script src="{% static 'js/core/popper.min.js' %}"></script>
 	<script src="{% static 'js/core/bootstrap.min.js' %}"></script>
 
@@ -733,8 +746,49 @@
 	<script src="{% static 'js/atlantis.min.js' %}"></script>
 
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<script type='text/javascript' src="{% static 'js/script.js' %}"></script>
+	
 	<script src="{% static 'js/setting-demo.js' %}"></script>
 	<script src="{% static 'js/demo.js' %}"></script>
+	<script src="{% static 'js/plugin/webfont/webfont.min.js' %}"></script>
+	<script src="{% static 'https://code.jquery.com/jquery-3.2.1.slim.min.js' %}" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="{% static 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.invoice.js' %}"></script>
+    <script>
+        jQuery(document).ready(function(){
+            jQuery().invoice({
+                addRow : "#addRow",
+                delete : ".delete",
+                parentClass : ".item-row",
+
+                price : ".price",
+                qty : ".qty",
+                total : ".total",
+                totalQty: "#totalQty",
+
+                subtotal : "#subtotal",
+                discount: "#discount",
+                shipping : "#shipping",
+                grandTotal : "#grandTotal"
+            });
+        });
+    </script>
+</body>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	
 	<script>
 		$(document).ready(function() {
 			$('#basic-datatables').DataTable({
@@ -874,8 +928,11 @@
 			lineWidth: '2',
 			lineColor: '#ffa534',
 			fillColor: 'rgba(255, 165, 52, .14)'
+
+			
 		});
 		
 	</script>
+
 </body>
 </html>
