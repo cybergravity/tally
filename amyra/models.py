@@ -16,3 +16,19 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Destination(models.Model):
+    slug = models.SlugField()
+    customer = models.ForeignKey(Customer, null=True, on_delete=models.CASCADE)
+    bill_type = models.CharField(max_length=500,null=True)
+    invoice_no = models.CharField(max_length=500,null=True)
+    hsn_code = models.CharField(max_length=4)
+    dated = models.DateField()
+    transport = models.CharField(max_length=500,null=True)
+    vehicle_no = models.CharField(max_length=500,null=True)
+    challan_no = models.CharField(max_length=500,null=True)
+    date =  models.DateField()
+    title = models.CharField(max_length=255)
+    created = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now_add=True)

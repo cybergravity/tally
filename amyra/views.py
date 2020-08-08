@@ -58,4 +58,5 @@ def edit_customer(request):
 
 
 def bill(request):
-    return render(request, 'bill.html')
+    customer = Customer.objects.all()
+    return render(request, 'bill.html', {'customer': customer})
