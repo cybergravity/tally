@@ -1,11 +1,11 @@
 /**
- * jQuery Invoice Plugin v1.0             
- *	                                           
- * Version 1.0, January - 2016	           
- * Author: Firoz Ahmad Likhon <likh.deshi@gmail.com>               
- * Website: https://github.com/likhonlikh 
- *                                            
- * Copyright (c) 2016 Firoz Ahmad         
+ * jQuery Invoice Plugin v1.0
+ *
+ * Version 1.0, January - 2016
+ * Author: Firoz Ahmad Likhon <likh.deshi@gmail.com>
+ * Website: https://github.com/likhonlikh
+ *
+ * Copyright (c) 2016 Firoz Ahmad
  * Released under the MIT license
       ___            ___  ___    __    ___      ___  ___________  ___      ___
      /  /           /  / /  /  _/ /   /  /     /  / / _______  / /   \    /  /
@@ -77,7 +77,7 @@ Invoice.prototype = {
 
          return 1;
      },
-	
+
     /***
      * Calculate total quantity of an order.
      *
@@ -138,8 +138,28 @@ Invoice.prototype = {
      * @returns {number}
      */
     newRow: function () {
-        jQuery(".item-row:last").after('<tr class="item-row"><td class="item-name"><div class="delete-btn"><input type="text" class="form-control item" placeholder="Item" type="text"><a class=' + $.opt.delete.substring(1) + ' href="javascript:;" title="Remove row">X</a></div></td><td><input class="form-control price" placeholder="Price" type="text"> </td><td><input class="form-control qty" placeholder="Quantity" type="text"></td><td><span class="total">0.00</span></td></tr>');
-		
+        jQuery(".item-row:last").after('' +
+            '<tr class="item-row">' +
+                '<td class="item-name">' +
+                    '<div class="delete-btn">' +
+                        '<input type="text" class="form-control item" placeholder="Item" type="text">' +
+                        '<a class=' + $.opt.delete.substring(1) + ' href="javascript:;" title="Remove row">X</a>' +
+                    '</div>' +
+                '</td>' +
+                '<td>' +
+                    '<input class="form-control qty" placeholder="Quantity" type="text">' +
+                '</td>' +
+                '<td>' +
+                    '<select class="form-control" style="width: 70px;">' +
+                        '<option>6</option>' +
+                        '<option>12</option>' +
+                    '</select>' +
+                '</td>' +
+                '<td>' +
+                    '<input class="form-control price" placeholder="Rate" type="number">' +
+                '</td>' +
+            '</tr>');
+
         if (jQuery($.opt.delete).length > 0) {
             jQuery($.opt.delete).show();
         }
@@ -236,6 +256,7 @@ jQuery.fn.invoice.defaults = {
 
     price: ".price",
     qty: ".qty",
+    rate: ".rate",
     total: ".total",
     totalQty: "#totalQty",
 
