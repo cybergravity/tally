@@ -68,11 +68,17 @@
                                                         {% endfor %}
                                                     </select>
 												</div>
+                                            </div>
+                                            <div class="col-md-6">
+												<div class="form-group form-group-default">
+													<label>Title</label>
+													<input id="addtitle" type="text" class="form-control" placeholder="Enter Title" name="title" style="word-wrap:break-word; table-layout:fixed;">
+												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group form-group-default">
 													<label>Bill Type</label>
-													<input id="addBillType" type="number" class="form-control" placeholder="Enter Bill Type" name="bill_type" style="word-wrap:break-word; table-layout:fixed;">
+													<input id="addBillType" type="text" class="form-control" placeholder="Enter Bill Type" name="bill_type" style="word-wrap:break-word; table-layout:fixed;">
 												</div>
 											</div>
 											<div class="col-md-6">
@@ -124,10 +130,10 @@
                                                     <table class="table table-bordered">
                                                         <thead>
                                                             <tr class="item-row">
-                                                                <th>Item</th>
-                                                                <th>Price</th>
+                                                                <th>Design Name</th>
                                                                 <th>Quantity</th>
-                                                                <th>Total</th>
+                                                                <th>Dibbi </th>
+                                                                <th>Rate</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -144,27 +150,17 @@
 																		<td><span class="total">0.00</span></td>
 																	</tr>-->
                                                             <tr>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td class="text-right"><strong>Sub Total</strong></td>
-                                                                <td><span id="subtotal">0.00</span></td>
+                                                                
+                                                                
                                                             </tr>
                                                             <tr>
                                                                 <td><strong>Total Quantity: </strong><span id="totalQty" style="color: red; font-weight: bold;">0</span> Units</td>
-                                                                <td></td>
-                                                                <td class="text-right"><strong>Discount</strong></td>
-                                                                <td><input class="form-control" id="discount" value="0" type="text" /></td>
+                                                            
                                                             </tr>
+                                                           
                                                             <tr>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td class="text-right"><strong>Shipping</strong></td>
-                                                                <td><input class="form-control" id="shipping" value="0" type="text" /></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td class="text-right"><strong>Grand Total</strong></td>
+                                                                
+                                                                <td class="text-left"><strong>Balance Amount</strong></td>
                                                                 <td><span id="grandTotal">0</span></td>
                                                             </tr>
                                                         </tbody>
@@ -188,22 +184,24 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Address</th>
-                                <th>Mobile No</th>
-                                <th>City</th>
-                                <th>State</th>
-                                <th>Gst No</th>
+                                <th>View</th>
+                                <th>Total Amount</th>
+                                <th>Balanced Amount</th>
+                                <th>Date</th>
+                                <th>Last Modified</th>
+                                
                                 <th style="width: 10%;">Action</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th>Name</th>
-                                <th>Address</th>
-                                <th>Mobile No</th>
-                                <th>City</th>
-                                <th>State</th>
-                                <th>Gst No</th>
+                                <th>Date</th>
+                                <th>Total Amount</th>
+                                <th>Balanced Amount</th>
+                                <th>Last Modified</th>
+                                
+                                <th style="width: 10%;">Action</th>
                             </tr>
                         </tfoot>
                         <tbody>

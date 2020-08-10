@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %}">
 	<link href="{% static 'https://www.jqueryscript.net/css/jquerysctipttop.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/darkly/bootstrap.min.css' %}" rel="stylesheet">
-    
+    <link rel="stylesheet" href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %}">
 	
 	<!-- Fonts and icons -->
 	<script src="{% static 'js/plugin/webfont/webfont.min.js' %}"></script>
@@ -478,19 +478,19 @@
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#tables">
 								<i class="fas fa-table"></i>
-								<p>Tables</p>
+								<p>Customer/Invoice View</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="tables">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="{% url 'bill' %}">
-											<span class="sub-item">Basic Table</span>
+											<span class="sub-item">INVOICE</span>
 										</a>
 									</li>
 									<li>
 										<a href="{% url 'datatables' %}">
-											<span class="sub-item">Datatables</span>
+											<span class="sub-item">CUSTOMER DETAILS</span>
 										</a>
 									</li>
 								</ul>
