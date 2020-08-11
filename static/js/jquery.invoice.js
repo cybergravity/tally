@@ -154,10 +154,13 @@ Invoice.prototype = {
             '<tr class="item-row">' +
                 '<td class="item-name">' +
                     '<div class="delete-btn">' +
-                        '<input type="text" class="form-control item" placeholder="Item" type="text">' +
+                        '<input class="form-control sr" placeholder="Sr. no." type="number">' +
                         '<a class=' + $.opt.delete.substring(1) + ' href="javascript:;" title="Remove row">X</a>' +
                     '</div>' +
                 '</td>' +
+		'<td>' +
+			'<input class="form-control sr" placeholder="Item" type="number">' +
+		'</td>' +
                 '<td>' +
                     '<input class="form-control qty" placeholder="Quantity" type="text">' +
                 '</td>' +
