@@ -32,6 +32,7 @@ class Destination(models.Model):
     title = models.CharField(max_length=255)
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now_add=True)
+    transport_cost=models.CharField(max_length=500, null=True)
 
     def __str__(self):
         return self.title
