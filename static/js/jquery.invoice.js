@@ -58,6 +58,7 @@ Invoice.prototype = {
         this.calcTotalQty();
         this.calcSubtotal();
         this.calcGrandTotal();
+        this.calcDibbiTotal();
     },
 
     /**
@@ -122,12 +123,23 @@ Invoice.prototype = {
      * @returns {number}
      */
     calcGrandTotal: function () {
-        var grandTotal = Number(jQuery($.opt.subtotal).html())
-                       + Number(jQuery($.opt.shipping).val())
-                       - Number(jQuery($.opt.discount).val());
+        let grandTotal = Number(jQuery($.opt.subtotal).html())
+            + Number(jQuery($.opt.shipping).val())
+            - Number(jQuery($.opt.discount).val());
         grandTotal = self.roundNumber(grandTotal, 2);
 
         jQuery($.opt.grandTotal).html(grandTotal);
+
+        return 1;
+    },
+
+    calcDibbiTotal: function () {
+        let dibbiTotal = Number(jQuery($.opt.subtotal).html())
+            + Number(jQuery($.opt.shipping).val())
+            - Number(jQuery($.opt.discount).val());
+        dibbiTotal = self.roundNumber(dibbiTotal, 2);
+
+        jQuery($.opt.dibbiTotal).html(dibbiTotal);
 
         return 1;
     },
@@ -151,8 +163,8 @@ Invoice.prototype = {
                 '</td>' +
                 '<td>' +
                     '<select class="form-control" style="width: 70px;">' +
-                        '<option>6</option>' +
-                        '<option>12</option>' +
+                        '<option class="dibbi">6</option>' +
+                        '<option class="dibbi">12</option>' +
                     '</select>' +
                 '</td>' +
                 '<td>' +
@@ -256,10 +268,10 @@ jQuery.fn.invoice.defaults = {
 
     price: ".price",
     qty: ".qty",
-    rate: ".rate",
     total: ".total",
     totalQty: "#totalQty",
 
+    dibbi: "#dibbiTotal",
     subtotal: "#subtotal",
     discount: "#discount",
     shipping: "#shipping",
