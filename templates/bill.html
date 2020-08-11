@@ -53,12 +53,7 @@
                                     {% csrf_token %}
                                     <div class="container">
                                         <div class="row">
-											<div class="col-sm-6">
-												<div class="form-group form-group-default">
-													<label>Slug</label>
-													<input id="addSlug" type="text" class="form-control" placeholder="Enter slug" name="slug">
-												</div>
-											</div>
+											
 											<div class="col-md-6">
 												<div class="form-group form-group-default">
 													<label>Customer</label>
@@ -122,6 +117,12 @@
 													<label>Vehicle no.</label>
 													<input id="addVehicleNo" type="text" class="form-control" placeholder="Enter Vehicle number" name="vehicle_no1">
 												</div>
+                                            </div>
+                                            <div class="col-sm-6">
+												<div class="form-group form-group-default">
+													<label>Slug</label>
+													<input id="addSlug" type="text" class="form-control" placeholder="Enter slug" name="slug">
+												</div>
 											</div>
 										</div>
                                         <div class="row">
@@ -130,6 +131,7 @@
                                                     <table class="table table-bordered">
                                                         <thead>
                                                             <tr class="item-row">
+                                                                <th>Sr No.</th>
                                                                 <th>Design Name</th>
                                                                 <th>Quantity</th>
                                                                 <th>Dibbi </th>
@@ -138,7 +140,7 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr id="hiderow">
-                                                                <td colspan="4">
+                                                                <td colspan="5">
                                                                     <a id="addRow" href="javascript:;" title="Add a row" class="btn btn-primary">Add a row</a>
                                                                 </td>
                                                             </tr>

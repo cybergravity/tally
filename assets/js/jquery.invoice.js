@@ -233,7 +233,7 @@ jQuery.fn.invoice.defaults = {
     addRow: "#addRow",
     delete: ".delete",
     parentClass: ".item-row",
-
+     
     price: ".price",
     qty: ".qty",
     total: ".total",

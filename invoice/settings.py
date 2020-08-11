@@ -76,7 +76,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'BINOD',
         'USER': 'postgres',
-        'PASSWORD': '1234',
+        'PASSWORD': '1256',
         'HOST': 'localhost',
         
     }
