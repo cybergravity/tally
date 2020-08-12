@@ -49,17 +49,17 @@
                             </div>
                             <div class="modal-body">
                                 <p class="small">Create a new row using this form, make sure you fill them all</p>
-                                <form method="POST" , action="{% url 'add_customer' %}">
+                                <form method="POST", action="{% url 'add_invoice' %}">
                                     {% csrf_token %}
                                     <div class="container">
                                         <div class="row">
-											
 											<div class="col-md-6">
 												<div class="form-group form-group-default">
 													<label>Customer</label>
-													<select id="addAddress" class="form-control"name="address">
+													<select id="addAddress" class="form-control">
                                                         {% for cust in customer %}
-                                                        <option>{{ cust }}</option>
+                                                            <option>{{ cust }}</option>
+                                                            <input type="hidden" value="{{ cust.pk }}" name="customer_id">
                                                         {% endfor %}
                                                     </select>
 												</div>

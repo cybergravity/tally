@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.template import loader
 from django.http import HttpResponse
-from .models import Customer ,Destination,Item
+from .models import Customer, Destination, Item
 
 
 # Create your views here.
@@ -33,6 +33,23 @@ def add_customer(request):
         return redirect('datatables')
 
 
+def add_invoice(request):
+    if request.method == "POST":
+        customer = request.POST['customer_id']
+        title = request.POST['title']
+        invoice_no = request.POST['invoice_num']
+        city = request.POST['city']
+        state = request.POST['state']
+        gst = request.POST['gst']
+        data = Customer.objects.create(name=customer, address=address, mobile_no=mobile, city=city, state=state,
+                                       gst_no=gst)
+        data.save()
+        return redirect('bill')
+
+    else:
+        return redirect('bill')
+
+
 def remove_customer(request):
     if request.method == "POST":
         customer_id = request.POST['id']
@@ -40,6 +57,7 @@ def remove_customer(request):
         return redirect('datatables')
     else:
         return redirect('datatables')
+
 
 def edit_customer(request):
     if request.method == "POST":

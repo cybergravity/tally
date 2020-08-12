@@ -15,6 +15,7 @@
  /____________/ /__/ /__/     \_\ /__/     /__/ /__________/ /__/     /__/
  Likhon the hackman, who claims himself as a hacker but really he isn't.
  */
+let sr = 0;
 
 (function (jQuery) {
     $.opt = {};  // jQuery Object
@@ -150,11 +151,12 @@ Invoice.prototype = {
      * @returns {number}
      */
     newRow: function () {
+        sr = sr + 1;
         jQuery(".item-row:last").after('' +
             '<tr class="item-row">' +
                 '<td class="item-name">' +
                     '<div class="delete-btn">' +
-                        '<input class="form-control sr" placeholder="Sr. no." type="number">' +
+                        '<p id="sr_no">' + sr + '</p>' +
                         '<a class=' + $.opt.delete.substring(1) + ' href="javascript:;" title="Remove row">X</a>' +
                     '</div>' +
                 '</td>' +
@@ -190,9 +192,11 @@ Invoice.prototype = {
      */
     deleteRow: function (elem) {
         jQuery(elem).parents($.opt.parentClass).remove();
-
         if (jQuery($.opt.delete).length < 2) {
             jQuery($.opt.delete).hide();
+        }
+        if (elem === sr){
+            sr = sr - 1;
         }
 
         return 1;
@@ -278,5 +282,5 @@ jQuery.fn.invoice.defaults = {
     subtotal: "#subtotal",
     discount: "#discount",
     shipping: "#shipping",
-    grandTotal: "#grandTotal"
+    grandTotal: "#grandTotal",
 };
