@@ -1,9 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.template import loader
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse_lazy
+
 from .models import Customer, Destination, Item
-
-
+import os
+from pathlib import *
 # Create your views here.
 
 
@@ -78,3 +80,30 @@ def edit_customer(request):
 def bill(request):
     customer = Customer.objects.all()
     return render(request, 'bill.html', {'customer': customer})
+
+
+def drive(request):
+    drive_path = Path('media\\drive')
+    return render(request, 'drive.html', {'drive': drive_path.iterdir(), 'path': drive_path})
+
+
+def drive_path(request, path):
+    dir_path = Path(path)
+    return render(request, 'drive.html', {'drive': dir_path.iterdir(), 'path': dir_path})
+
+
+def add_folder(request, path):
+    try:
+        folder_name = request.POST['folder-name']
+        drive_path = Path(f'{path}\\{folder_name}')
+        drive_path.mkdir()
+    except FileExistsError:
+        pass
+    return HttpResponseRedirect(reverse('drive_path', args=[path]))
+
+
+def add_file(request, path):
+    file_name = request.POST['file-name']
+    with open(f'{path}\\' + file_name, 'w') as file:
+        pass
+    return HttpResponseRedirect(reverse('drive_path', args=[path]))

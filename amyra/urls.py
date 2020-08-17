@@ -11,4 +11,8 @@ urlpatterns = [
     path('datatables/edit_customer/', views.edit_customer, name="edit_customer"),
     path('bill/', views.bill, name="bill"),
     path('bill/add_invoice', views.add_invoice, name="add_invoice"),
+    path('drive/', views.drive, name="drive"),
+    path('drive/<str:path>/', views.drive_path, name="drive_path"),
+    path('add_folder/<str:path>/', views.add_folder, name='add_folder'),
+    path('add_file/<str:path>/', views.add_file, name='add_file')
 ]

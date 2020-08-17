@@ -101,10 +101,17 @@
 												</div>
 											</div>
 											<div class="col-md-6">
-												<div class="form-group form-group-default">
-													<label>Date</label>
-													<input id="addDate" type="date" class="form-control" name="date">
+												<div class="form-group">
+												<label>Date</label>
+												<div class="input-group">
+													<input type="text" class="form-control" id="datepicker" name="date">
+													<div class="input-group-append">
+														<span class="input-group-text">
+															<i class="fa fa-calendar-check"></i>
+														</span>
+													</div>
 												</div>
+											</div>
 											</div>
                                             <div class="col-md-6">
 												<div class="form-group form-group-default">
@@ -351,4 +358,46 @@
         </div>
     </div>
 </div>
+
+    <script>
+    		$('#datetime').datetimepicker({
+			format: 'MM/DD/YYYY H:mm',
+		});
+		$('#datepicker').datetimepicker({
+			format: 'MM/DD/YYYY',
+		});
+		$('#timepicker').datetimepicker({
+			format: 'h:mm A',
+		});
+
+		$('#basic').select2({
+			theme: "bootstrap"
+		});
+
+		$('#multiple').select2({
+			theme: "bootstrap"
+		});
+
+		$('#multiple-states').select2({
+			theme: "bootstrap"
+		});
+
+		$('#tagsinput').tagsinput({
+			tagClass: 'badge-info'
+		});
+
+		$( function() {
+			$( "#slider" ).slider({
+				range: "min",
+				max: 100,
+				value: 40,
+			});
+			$( "#slider-range" ).slider({
+				range: true,
+				min: 0,
+				max: 500,
+				values: [ 75, 300 ]
+			});
+		} );
+    </script>
 {% endblock %}

@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <style>
+        .link-but-not-text{
+            color:black;
+        }
+        .link-but-not-text:hover{
+            text-decoration:none;
+            color:black;
+        }
+        .link-but-not-text:focus{
+            text-decoration:none;
+            color:black;
+        }
+    </style>
+<div class="page-navs bg-white">
+    <div class="page-header">
+        <p>Drive</p>
+    </div>
+
+    <div class="col-md-20">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center" style="margin-top: 30px; margin-bottom: 30px;">
+                <h4 class="card-title" style="margin-bottom: 5px;">Drive</h4>
+                <div class="dropdown show ml-auto" style="margin-right: 20px; margin-bottom: 10px;">
+                    <a class="btn btn-primary btn-round dropdown-toggle ml-auto" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-plus"></i>
+                        Add
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addFolder">Add Folder</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addFile">Add File</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addFolder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Add Folder</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+            <form action="{% url 'add_folder' path %}" method="post">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="form-group">
+                        Enter your folder name below:
+                        <input type="text" class="form-control" placeholder="Enter your folder name" name="folder-name">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="addFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Add File</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+            <form action="{% url 'add_file' path %}" method="post">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="form-group">
+                        Enter your file name below:
+                        <input type="text" class="form-control" placeholder="Enter your file name" name="file-name">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+		</div>
+	</div>
+</div>
+
+    <div class="page-inner" style="margin-top: -40px;">
+        <div class="row row-projects">
+            {% for each in drive %}
+                <div class="col-sm-4 col-lg-2">
+                    {% if each.is_dir %}
+                        <a href="{% url 'drive_path' each %}" class="link-but-not-text">
+                            <div class="card">
+                                <center><img class="card-img-top rounded" src="{% static 'img/folder.png' %}" alt="folder img" style="width:150px;"></center>
+                                <div class="card-body pt-2">
+                                    <h4 class="mb-1 fw-bold">{{ each.name }}</h4>
+                                </div>
+                            </div>
+                        </a>
+                    {% elif each.is_file %}
+                        <a href="" class="link-but-not-text">
+                            <div class="card">
+                                <center><img class="card-img-top rounded" src="{% static 'img/file.png' %}" alt="file img" style="width:150px;"></center>
+                                <div class="card-body pt-2">
+                                    <h4 class="mb-1 fw-bold">{{ each.name }}</h4>
+                                </div>
+                            </div>
+                        </a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
