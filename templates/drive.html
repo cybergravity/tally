@@ -31,6 +31,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addFolder">Add Folder</a>
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addFile">Add File</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#uploadFile">Upload File</a>
                     </div>
                 </div>
             </div>
@@ -83,6 +84,31 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="uploadFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Upload File</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+            <form action="?" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="form-group">
+                        Upload your file below:
+                        <input type="file" name="file">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" name="upload">Upload File</button>
                 </div>
             </form>
 		</div>

@@ -107,3 +107,9 @@ def add_file(request, path):
     with open(f'{path}\\' + file_name, 'w') as file:
         pass
     return HttpResponseRedirect(reverse('drive_path', args=[path]))
+
+
+def upload_file(request, path):
+    file = request.POST['file']
+    file = open('tests.py')
+    save_path = Path(f'{path}\\')
