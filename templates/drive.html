@@ -200,6 +200,14 @@
                                 <div class="card-body pt-2">
                                     <h4 class="mb-1 fw-bold" style="font-size:12px;">{{ each.name|slice:":18" }}</h4>
                                 </div>
+                                <div class="row">
+                                    <button class="btn btn-link btn-danger" data-original-title="Remove" data-toggle="modal" data-target="#deleteFolder">
+                                        <i class="fa fa-times" style="font-size: 20px;"></i>
+                                    </button>
+                                    <button class="btn btn-link btn-primary btn-lg ml-auto" data-toggle="modal" data-target="#RenameFolder">
+                                        <i class="fa fa-edit" style="font-size: 17px;"></i>
+                                    </button>
+                                </div>
                             </div>
                         </a>
                     {% endif %}
