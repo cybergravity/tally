@@ -102,4 +102,10 @@ def calculate_bill(sender, instance, created, **kwargs):
         calculation.save()
 
 
+class Files(models.Model):
+    title = models.CharField(max_length=255, blank=True)
+    file = models.FileField(upload_to='drive/Files')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+
 post_save.connect(calculate_bill, sender=Destination)

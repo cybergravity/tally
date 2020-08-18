@@ -30,7 +30,8 @@
                     </a>
                     {% endif %}
                     Drive</h4>
-                <div class="dropdown show ml-auto" style="margin-right: 20px; margin-bottom: 10px;">
+                <div class="row ml-auto">
+                    <div class="dropdown show" style="margin-right: 20px; margin-bottom: 10px;">
                     <a class="btn btn-primary btn-round dropdown-toggle ml-auto" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-plus"></i>
                         Add
@@ -38,12 +39,67 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addFolder">Add Folder</a>
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addFile">Add File</a>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#uploadFile">Upload File</a>
                     </div>
                 </div>
+                    <a class="btn btn-primary btn-round ml-auto" style="margin-right: 20px; margin-bottom: 10px; color:white;" data-toggle="modal" data-target=".bd-example-modal-sm">
+                        <i class="fa fa-plus"></i>
+                        Upload
+                    </a>
+                </div>
+
+
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+
+            <div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Upload Files</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+            {# 2. FILE INPUT TO BE USED BY THE PLUG-IN #}
+            <input id="fileupload" type="file" name="file" multiple
+               style="display: none;"
+               data-url="{% url 'basic_upload' %}"
+               data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
+                <div class="well text-muted text-center" style="padding-top: 4rem; padding-bottom: 4rem;">
+{#                        <button type="button" class="btn btn-primary js-upload-photos">#}
+{#                          <span class="glyphicon glyphicon-cloud-upload"></span> Upload Files#}
+{#                        </button>#}
+                    <div class="card-body">
+                        <div class="dz-message" data-dz-message="">
+                        <div class="icon">
+                            <i class="flaticon-file"></i>
+                        </div>
+                        <h4 class="message">Drag and Drop files here</h4>
+                        <div class="note">Drag and Drop your files to continue</div>
+                    </div>
+                    </div>
+                </div>
+		</div>
+	</div>
+</div>
+
+    <div class="modal fade" id="modal-progress" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Uploading...</h4>
+      </div>
+      <div class="modal-body">
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="modal fade" id="addFolder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -96,32 +152,6 @@
 		</div>
 	</div>
 </div>
-<div class="modal fade" id="uploadFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLongTitle">Upload File</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-            <form action="?" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="modal-body">
-                    <div class="form-group">
-                        Upload your file below:
-                        <input type="file" name="file">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" name="upload">Upload File</button>
-                </div>
-            </form>
-		</div>
-	</div>
-</div>
-
     <div class="page-inner" style="margin-top: -40px;">
         <div class="row row-projects">
             {% for each in drive %}

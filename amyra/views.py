@@ -1,14 +1,19 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect, reverse
 from django.template import loader
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse_lazy
-
+from django.views.generic.base import View
 from .models import Customer, Destination, Item
 import os
 from pathlib import *
 import shutil
+from django.shortcuts import render
+from django.http import JsonResponse
+from django.views import View
 
+from .forms import PhotoForm
+from .models import Files
 # Create your views here.
 
 
@@ -151,3 +156,18 @@ def rename_file(request, path):
     else:
         os.rename(file, path + os.path.sep + name)
     return HttpResponseRedirect(reverse('drive_path', args=[path]))
+
+
+class BasicUploadView(View):
+    def get(self, request):
+        file_lists = Files.objects.all()
+        return render(self.request, 'index.html', {'files': file_lists})
+
+    def post(self, request):
+        form = PhotoForm(self.request.POST, self.request.FILES)
+        if form.is_valid():
+            photo = form.save()
+            data = {'is_valid': True, 'name': photo.file.name, 'url': photo.file.url}
+        else:
+            data = {'is_valid': False}
+        return JsonResponse(data)

@@ -18,5 +18,6 @@ urlpatterns = [
     path('remove_folder/<str:path>/', views.remove_folder, name='remove_folder'),
     path('rename_folder/<str:path>/', views.rename_folder, name='rename_folder'),
     path('remove_file/<str:path>/', views.remove_file, name='remove_file'),
-    path('rename_file/<str:path>/', views.rename_file, name='rename_file')
+    path('rename_file/<str:path>/', views.rename_file, name='rename_file'),
+    path(r'^basic-upload/$', views.BasicUploadView.as_view(), name='basic_upload'),
 ]
