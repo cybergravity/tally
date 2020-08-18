@@ -166,14 +166,14 @@
                                     <h4 class="mb-1 fw-bold" style="font-size:12px;">{{ each.name|slice:":18" }}</h4>
                                 </a>
                                 <div class="row">
-                                    <button class="btn btn-link btn-danger" data-original-title="Remove" data-toggle="modal" data-target="#deleteFolder">
+                                    <button class="btn btn-link btn-danger" data-original-title="Remove" data-toggle="modal" data-target="#deleteFolder{{ forloop.counter }}">
                                         <i class="fa fa-times" style="font-size: 20px;"></i>
                                     </button>
-                                    <button class="btn btn-link btn-primary btn-lg ml-auto" data-toggle="modal" data-target="#RenameFolder">
+                                    <button class="btn btn-link btn-primary btn-lg ml-auto" data-toggle="modal" data-target="#RenameFolder{{ forloop.counter }}">
                                         <i class="fa fa-edit" style="font-size: 17px;"></i>
                                     </button>
 
-                                    <div class="modal fade" id="deleteFolder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal fade" id="deleteFolder{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -200,7 +200,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="modal fade" id="RenameFolder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal fade" id="RenameFolder{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -239,13 +239,13 @@
                                     <h4 class="mb-1 fw-bold" style="font-size:12px;">{{ each.name|slice:":18" }}</h4>
                                 </a>
                                 <div class="row">
-                                    <button class="btn btn-link btn-danger" data-original-title="Remove" data-toggle="modal" data-target="#deleteFile">
+                                    <button class="btn btn-link btn-danger" data-original-title="Remove" data-toggle="modal" data-target="#deleteFile{{ forloop.counter }}">
                                         <i class="fa fa-times" style="font-size: 20px;"></i>
                                     </button>
-                                    <button class="btn btn-link btn-primary btn-lg ml-auto" data-toggle="modal" data-target="#renameFile">
+                                    <button class="btn btn-link btn-primary btn-lg ml-auto" data-toggle="modal" data-target="#renameFile{{ forloop.counter }}">
                                         <i class="fa fa-edit" style="font-size: 17px;"></i>
                                     </button>
-                                    <div class="modal fade" id="deleteFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal fade" id="deleteFile{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -272,7 +272,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="modal fade" id="renameFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal fade" id="renameFile{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
