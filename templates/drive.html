@@ -23,7 +23,13 @@
     <div class="col-md-20">
         <div class="container-fluid">
             <div class="d-flex align-items-center" style="margin-top: 30px; margin-bottom: 30px;">
-                <h4 class="card-title" style="margin-bottom: 5px;">Drive</h4>
+                <h4 class="card-title" style="margin-bottom: 5px;">
+                    {% if showBack %}
+                    <a href="{% url 'drive_path' back %}">
+                        <i class="fas fa-arrow-left btn btn-primary btn-round" style="margin-right: 5px"></i>
+                    </a>
+                    {% endif %}
+                    Drive</h4>
                 <div class="dropdown show ml-auto" style="margin-right: 20px; margin-bottom: 10px;">
                     <a class="btn btn-primary btn-round dropdown-toggle ml-auto" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-plus"></i>
@@ -152,7 +158,7 @@
                                                         <div class="form-group">
                                                             Are you sure to delete this folder? <br>
                                                             <input type="hidden" value="{{ each }}" name="folder-path">
-                                                            <small style="font-size: 10px; color:grey;">Note that deleting is permanent and you won't be able to recover this file</small>
+                                                            <small style="font-size: 10px; color:grey;">Note that deleting is permanent and you won't be able to recover this Folder</small>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
@@ -179,7 +185,7 @@
                                                         <div class="form-group">
                                                             Enter your new name below for this folder:
                                                             <input type="hidden" value="{{ each }}" name="folder-path">
-                                                            <input type="text" class="form-control" name="folder-name" placeholder="Enter your name here.">
+                                                            <input type="text" class="form-control" name="folder-name" placeholder="Enter your name here." value="{{ each.name }}">
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
@@ -194,22 +200,77 @@
                             </div>
                         </div>
                     {% elif each.is_file %}
-                        <a href="" class="link-but-not-text">
-                            <div class="card">
-                                <center><img class="card-img-top rounded" src="{% static 'img/file.png' %}" alt="file img" style="width:150px;"></center>
-                                <div class="card-body pt-2">
+                        <div class="card">
+                            <a href="/{{ path }}/{{ each.name }}" class="link-but-not-text">
+                                <center><img class="card-img-top rounded" src="{% static 'img/file.png' %}" alt="file img" style="width:130px;"></center>
+                            </a>
+                            <div class="card-body pt-2">
+                                <a href="" class="link-but-not-text">
                                     <h4 class="mb-1 fw-bold" style="font-size:12px;">{{ each.name|slice:":18" }}</h4>
-                                </div>
+                                </a>
                                 <div class="row">
-                                    <button class="btn btn-link btn-danger" data-original-title="Remove" data-toggle="modal" data-target="#deleteFolder">
+                                    <button class="btn btn-link btn-danger" data-original-title="Remove" data-toggle="modal" data-target="#deleteFile">
                                         <i class="fa fa-times" style="font-size: 20px;"></i>
                                     </button>
-                                    <button class="btn btn-link btn-primary btn-lg ml-auto" data-toggle="modal" data-target="#RenameFolder">
+                                    <button class="btn btn-link btn-primary btn-lg ml-auto" data-toggle="modal" data-target="#renameFile">
                                         <i class="fa fa-edit" style="font-size: 17px;"></i>
                                     </button>
+                                    <div class="modal fade" id="deleteFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">Delete File</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <form action="{% url 'remove_file' path %}" method="POST" enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            Are you sure to delete this File? <br>
+                                                            <input type="hidden" value="{{ each }}" name="file-path">
+                                                            <small style="font-size: 10px; color:grey;">Note that deleting is permanent and you won't be able to recover this file</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-danger" name="upload">Delete</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal fade" id="renameFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">Rename File</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <form action="{% url 'rename_file' path %}" method="POST" enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            Enter your new name below for this file:
+                                                            <input type="hidden" value="{{ each }}" name="file-path">
+                                                            <input type="text" class="form-control" name="file-name" value="{{ each.name }}" placeholder="Enter your name here.">
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary" name="upload">Rename</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     {% endif %}
                 </div>
             {% endfor %}

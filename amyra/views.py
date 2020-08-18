@@ -86,19 +86,23 @@ def bill(request):
 
 
 def drive(request):
-    drive_path = Path('media\\drive')
-    return render(request, 'drive.html', {'drive': drive_path.iterdir(), 'path': drive_path})
+    drive_path = Path('media'+ os.path.sep + 'drive')
+    return render(request, 'drive.html', {'drive': drive_path.iterdir(), 'path': drive_path, 'showBack': False})
 
 
 def drive_path(request, path):
     dir_path = Path(path)
-    return render(request, 'drive.html', {'drive': dir_path.iterdir(), 'path': dir_path})
+    showBack = True
+    index = path.rfind("\\")
+    if path == 'media\\drive':
+        showBack = False
+    return render(request, 'drive.html', {'drive': dir_path.iterdir(), 'path': dir_path, 'back': path[:index], 'showBack': showBack})
 
 
 def add_folder(request, path):
     try:
         folder_name = request.POST['folder-name']
-        drive_path = Path(f'{path}\\{folder_name}')
+        drive_path = Path(f'{path}' + os.path.sep + f'{folder_name}')
         drive_path.mkdir()
     except FileExistsError:
         pass
@@ -110,7 +114,7 @@ def add_file(request, path):
     if file_name.count(".") < 1:
         messages.success(request, "File Must have extension")
     else:
-        with open(f'{path}\\' + file_name, 'w') as file:
+        with open(path + os.path.sep + file_name, 'w') as file:
             pass
     return HttpResponseRedirect(reverse('drive_path', args=[path]))
 
@@ -118,8 +122,6 @@ def add_file(request, path):
 def remove_folder(request, path):
     folder_poth = request.POST['folder-path']
     folder_to_remove = Path(folder_poth)
-    files = folder_to_remove.rglob("*.*")
-
     shutil.rmtree(folder_to_remove)
     return HttpResponseRedirect(reverse('drive_path', args=[path]))
 
@@ -128,5 +130,24 @@ def rename_folder(request, path):
     name = request.POST['folder-name']
     folder_poth = request.POST['folder-path']
     folder_to_rename = Path(folder_poth)
-    folder_to_rename.rename(path + "\\" + name)
+    try:
+        folder_to_rename.rename(path + os.path.sep + name)
+    except FileExistsError:
+        messages.success(request, "Folder already exist. Please choose other name to continue")
+    return HttpResponseRedirect(reverse('drive_path', args=[path]))
+
+
+def remove_file(request, path):
+    file = request.POST['file-path']
+    os.remove(file)
+    return HttpResponseRedirect(reverse('drive_path', args=[path]))
+
+
+def rename_file(request, path):
+    file = request.POST['file-path']
+    name = request.POST['file-name']
+    if name.count(".") < 1:
+        messages.success(request, "File Must have extension")
+    else:
+        os.rename(file, path + os.path.sep + name)
     return HttpResponseRedirect(reverse('drive_path', args=[path]))
