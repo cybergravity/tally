@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect, reverse
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
@@ -6,6 +7,8 @@ from django.urls import reverse_lazy
 from .models import Customer, Destination, Item
 import os
 from pathlib import *
+import shutil
+
 # Create your views here.
 
 
@@ -104,12 +107,26 @@ def add_folder(request, path):
 
 def add_file(request, path):
     file_name = request.POST['file-name']
-    with open(f'{path}\\' + file_name, 'w') as file:
-        pass
+    if file_name.count(".") < 1:
+        messages.success(request, "File Must have extension")
+    else:
+        with open(f'{path}\\' + file_name, 'w') as file:
+            pass
     return HttpResponseRedirect(reverse('drive_path', args=[path]))
 
 
-def upload_file(request, path):
-    file = request.POST['file']
-    file = open('tests.py')
-    save_path = Path(f'{path}\\')
+def remove_folder(request, path):
+    folder_poth = request.POST['folder-path']
+    folder_to_remove = Path(folder_poth)
+    files = folder_to_remove.rglob("*.*")
+
+    shutil.rmtree(folder_to_remove)
+    return HttpResponseRedirect(reverse('drive_path', args=[path]))
+
+
+def rename_folder(request, path):
+    name = request.POST['folder-name']
+    folder_poth = request.POST['folder-path']
+    folder_to_rename = Path(folder_poth)
+    folder_to_rename.rename(path + "\\" + name)
+    return HttpResponseRedirect(reverse('drive_path', args=[path]))

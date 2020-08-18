@@ -14,5 +14,7 @@ urlpatterns = [
     path('drive/', views.drive, name="drive"),
     path('drive/<str:path>/', views.drive_path, name="drive_path"),
     path('add_folder/<str:path>/', views.add_folder, name='add_folder'),
-    path('add_file/<str:path>/', views.add_file, name='add_file')
+    path('add_file/<str:path>/', views.add_file, name='add_file'),
+    path('remove_folder/<str:path>/', views.remove_folder, name='remove_folder'),
+    path('rename_folder/<str:path>/', views.rename_folder, name='rename_folder')
 ]
