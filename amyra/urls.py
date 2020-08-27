@@ -20,4 +20,5 @@ urlpatterns = [
     path('remove_file/<str:path>/', views.remove_file, name='remove_file'),
     path('rename_file/<str:path>/', views.rename_file, name='rename_file'),
     path(r'^basic-upload/$', views.BasicUploadView.as_view(), name='basic_upload'),
+    path(r'^image_upload/$', views.ImageUploadView.as_view(), name='image_upload'),
 ]

@@ -4,7 +4,7 @@ from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse_lazy
 from django.views.generic.base import View
-from .models import Customer, Destination, Item
+from .models import Customer, Destination, Item, Images
 import os
 from pathlib import *
 import shutil
@@ -162,6 +162,21 @@ class BasicUploadView(View):
     def get(self, request):
         file_lists = Files.objects.all()
         return render(self.request, 'index.html', {'files': file_lists})
+
+    def post(self, request):
+        form = PhotoForm(self.request.POST, self.request.FILES)
+        if form.is_valid():
+            photo = form.save()
+            data = {'is_valid': True, 'name': photo.file.name, 'url': photo.file.url}
+        else:
+            data = {'is_valid': False}
+        return JsonResponse(data)
+
+
+class ImageUploadView(View):
+    def get(self, request):
+        image_lists = Images.objects.all()
+        return render(self.request, 'index.html', {'files': image_lists})
 
     def post(self, request):
         form = PhotoForm(self.request.POST, self.request.FILES)

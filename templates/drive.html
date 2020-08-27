@@ -41,10 +41,17 @@
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addFile">Add File</a>
                     </div>
                 </div>
-                    <a class="btn btn-primary btn-round ml-auto" style="margin-right: 20px; margin-bottom: 10px; color:white;" data-toggle="modal" data-target=".bd-example-modal-sm">
+
+                    <div class="dropdown show" style="margin-right: 20px; margin-bottom: 10px;">
+                    <a class="btn btn-primary btn-round dropdown-toggle ml-auto" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-plus"></i>
                         Upload
                     </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target=".bd-example-modal-sm">Upload Files</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target=".uploadImageInImageFolder">Upload Image</a>
+                    </div>
+                </div>
                 </div>
 
 
@@ -80,6 +87,38 @@
                         </div>
                         <h4 class="message">Drag and Drop files here</h4>
                         <div class="note">Drag and Drop your files to continue</div>
+                    </div>
+                    </div>
+                </div>
+		</div>
+	</div>
+</div>
+
+    <div class="modal fade uploadImageInImageFolder" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+
+            <div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Upload Images</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+            {# 2. FILE INPUT TO BE USED BY THE PLUG-IN #}
+            <input id="fileupload" type="file" name="file" multiple
+               style="display: none;"
+               accept="image/*"
+               data-url="{% url 'image_upload' %}"
+               data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
+                <div class="well text-muted text-center js-upload-photos" style="padding-top: 4rem; padding-bottom: 4rem;">
+                    <div class="card-body">
+                        <div class="dz-message" data-dz-message="">
+                        <div class="icon">
+                            <i class="flaticon-file"></i>
+                        </div>
+                        <h4 class="message">Drag and Drop Images here</h4>
+                        <div class="note">Drag and Drop your images to continue</div>
                     </div>
                     </div>
                 </div>
