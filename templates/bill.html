@@ -58,8 +58,7 @@
 													<label>Customer</label>
 													<select id="addAddress" class="form-control">
                                                         {% for cust in customer %}
-                                                            <option>{{ cust }}</option>
-                                                            <input type="hidden" value="{{ cust.pk }}" name="customer_id">
+                                                            <option name="customer_id">{{ cust }}</option>
                                                         {% endfor %}
                                                     </select>
 												</div>

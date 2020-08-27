@@ -12,7 +12,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views import View
 
-from .forms import PhotoForm
+from .forms import PhotoForm, FileForm, PDFForm
 from .models import Files
 # Create your views here.
 
@@ -164,10 +164,10 @@ class BasicUploadView(View):
         return render(self.request, 'index.html', {'files': file_lists})
 
     def post(self, request):
-        form = PhotoForm(self.request.POST, self.request.FILES)
+        form = FileForm(self.request.POST, self.request.FILES)
         if form.is_valid():
-            photo = form.save()
-            data = {'is_valid': True, 'name': photo.file.name, 'url': photo.file.url}
+            file = form.save()
+            data = {'is_valid': True, 'name': file.file.name, 'url': file.file.url}
         else:
             data = {'is_valid': False}
         return JsonResponse(data)
@@ -183,6 +183,21 @@ class ImageUploadView(View):
         if form.is_valid():
             photo = form.save()
             data = {'is_valid': True, 'name': photo.file.name, 'url': photo.file.url}
+        else:
+            data = {'is_valid': False}
+        return JsonResponse(data)
+
+
+class PDFUploadView(View):
+    def get(self, request):
+        pdf_lists = PDFForm.objects.all()
+        return render(self.request, 'index.html', {'files': pdf_lists})
+
+    def post(self, request):
+        form = PDFForm(self.request.POST, self.request.FILES)
+        if form.is_valid():
+            pdf = form.save()
+            data = {'is_valid': True, 'name': pdf.file.name, 'url': pdf.file.url}
         else:
             data = {'is_valid': False}
         return JsonResponse(data)

@@ -50,6 +50,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target=".bd-example-modal-sm">Upload Files</a>
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target=".uploadImageInImageFolder">Upload Image</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target=".uploadPDFInPDFFolder">Upload PDF</a>
                     </div>
                 </div>
                 </div>
@@ -70,16 +71,11 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-
-            {# 2. FILE INPUT TO BE USED BY THE PLUG-IN #}
             <input id="fileupload" type="file" name="file" multiple
                style="display: none;"
                data-url="{% url 'basic_upload' %}"
                data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
-                <div class="well text-muted text-center js-upload-photos" style="padding-top: 4rem; padding-bottom: 4rem;">
-{#                        <button type="button" class="btn btn-primary js-upload-photos">#}
-{#                          <span class="glyphicon glyphicon-cloud-upload"></span> Upload Files#}
-{#                        </button>#}
+                <div class="well text-muted text-center js-upload-files" style="padding-top: 4rem; padding-bottom: 4rem;">
                     <div class="card-body">
                         <div class="dz-message" data-dz-message="">
                         <div class="icon">
@@ -106,7 +102,7 @@
 			</div>
 
             {# 2. FILE INPUT TO BE USED BY THE PLUG-IN #}
-            <input id="fileupload" type="file" name="file" multiple
+            <input id="imageupload" type="file" name="file" multiple
                style="display: none;"
                accept="image/*"
                data-url="{% url 'image_upload' %}"
@@ -119,6 +115,38 @@
                         </div>
                         <h4 class="message">Drag and Drop Images here</h4>
                         <div class="note">Drag and Drop your images to continue</div>
+                    </div>
+                    </div>
+                </div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade uploadPDFInPDFFolder" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+
+            <div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Upload PDF</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+            {# 2. FILE INPUT TO BE USED BY THE PLUG-IN #}
+            <input id="pdfupload" type="file" name="file" multiple
+               style="display: none;"
+               accept=".pdf"
+               data-url="{% url 'pdf_upload' %}"
+               data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
+                <div class="well text-muted text-center js-upload-pdf" style="padding-top: 4rem; padding-bottom: 4rem;">
+                    <div class="card-body">
+                        <div class="dz-message" data-dz-message="">
+                        <div class="icon">
+                            <i class="flaticon-file"></i>
+                        </div>
+                        <h4 class="message">Drag and Drop PDF here</h4>
+                        <div class="note">Drag and Drop your PDF to continue</div>
                     </div>
                     </div>
                 </div>

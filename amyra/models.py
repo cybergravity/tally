@@ -15,7 +15,7 @@ class Customer(models.Model):
     last_modified = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        o= ('-created',)
+        ordering = ('-created',)
 
     def __str__(self):
         return self.name
@@ -35,7 +35,7 @@ class Destination(models.Model):
     title = models.CharField(max_length=255)
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now_add=True)
-    transport_cost=models.CharField(max_length=500, null=True)
+    transport_cost = models.CharField(max_length=500, null=True)
 
     def __str__(self):
         return self.title
@@ -104,7 +104,9 @@ def calculate_bill(sender, instance, created, **kwargs):
                                                      total_amount_in_words=total_amount_in_words)
         calculation.save()
 
+
 post_save.connect(calculate_bill, sender=Destination)
+
 
 class Files(models.Model):
     title = models.CharField(max_length=255, blank=True)
@@ -118,3 +120,7 @@ class Images(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
 
+class PDF(models.Model):
+    title = models.CharField(max_length=255, blank=True)
+    file = models.ImageField(upload_to='drive/pdf')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
