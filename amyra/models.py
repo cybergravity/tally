@@ -106,21 +106,3 @@ def calculate_bill(sender, instance, created, **kwargs):
 
 
 post_save.connect(calculate_bill, sender=Destination)
-
-
-class Files(models.Model):
-    title = models.CharField(max_length=255, blank=True)
-    file = models.FileField(upload_to='drive/Files')
-    uploaded_at = models.DateTimeField(auto_now_add=True)
-
-
-class Images(models.Model):
-    title = models.CharField(max_length=255, blank=True)
-    file = models.ImageField(upload_to='drive/images')
-    uploaded_at = models.DateTimeField(auto_now_add=True)
-
-
-class PDF(models.Model):
-    title = models.CharField(max_length=255, blank=True)
-    file = models.ImageField(upload_to='drive/pdf')
-    uploaded_at = models.DateTimeField(auto_now_add=True)
