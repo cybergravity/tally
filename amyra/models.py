@@ -134,8 +134,7 @@ class Folder(models.Model):
 
 class File(models.Model):
     folder = models.ForeignKey(Folder, on_delete=models.CASCADE, related_name='folderfiles')
-    description = models.CharField(_('File Description'), max_length=70)
-    location = models.FileField(_('Location of the File'), upload_to=file_location_path, null=True, blank=True)
+    file = models.FileField(_('File'), upload_to=file_location_path, null=True, blank=True)
 
     def __str__(self):
-        return self.description
+        return self.file
