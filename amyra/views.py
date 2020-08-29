@@ -4,7 +4,7 @@ from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse_lazy
 from django.views.generic.base import View
-from .models import Customer, Destination
+from .models import Customer, Destination, File, Folder
 import os
 from pathlib import *
 import shutil
@@ -85,3 +85,11 @@ def edit_customer(request):
 def bill(request):
     customer = Customer.objects.all()
     return render(request, 'bill.html', {'customer': customer})
+
+
+def drive(request):
+    folders = Folder.objects.filter(parent=None)
+    context = {
+        'folders': folders
+    }
+    return render(request, 'drive.html', context)
