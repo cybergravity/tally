@@ -12,4 +12,5 @@ urlpatterns = [
     path('bill/', views.bill, name="bill"),
     path('bill/add_invoice', views.add_invoice, name="add_invoice"),
     path('drive/', views.drive, name="drive")
+    path('delete_folder/', views.delete_folder, name="delete_folder")
 ]

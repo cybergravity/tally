@@ -2,7 +2,147 @@
 {% load static %}
 {% block onload %}sweetAlert(){% endblock %}
 {% block content %}
+    <style>
+        .link-but-not-text{
+            color:black;
+        }
+        .link-but-not-text:hover{
+            text-decoration:none;
+            color:black;
+        }
+        .link-but-not-text:focus{
+            text-decoration:none;
+            color:black;
+        }
+    </style>
 
+    <div class="page-navs bg-white">
+    <div class="page-header">
+        <p>Drive</p>
+    </div>
+
+    <div class="col-md-20">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center" style="margin-top: 30px; margin-bottom: 30px;">
+                <h4 class="card-title" style="margin-bottom: 5px;">
+                    {% if showBack %}
+                    <a href="">
+                        <i class="fas fa-arrow-left btn btn-primary btn-round" style="margin-right: 5px"></i>
+                    </a>
+                    {% endif %}
+                    Drive</h4>
+                <div class="row ml-auto">
+                    <div class="dropdown show" style="margin-right: 20px; margin-bottom: 10px;">
+                    <a class="btn btn-primary btn-round dropdown-toggle ml-auto" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-plus"></i>
+                        Add
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addFolder">Add Folder</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addFile">Add File</a>
+                    </div>
+                </div>
+
+                    <div class="dropdown show" style="margin-right: 20px; margin-bottom: 10px;">
+                    <a class="btn btn-primary btn-round dropdown-toggle ml-auto" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-plus"></i>
+                        Upload
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target=".bd-example-modal-sm">Upload Files</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target=".uploadImageInImageFolder">Upload Image</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target=".uploadPDFInPDFFolder">Upload PDF</a>
+                    </div>
+                </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="page-inner" style="margin-top: -40px;">
+        <div class="row row-projects">
+            {% for each in folders %}
+                <div class="col-sm-4 col-lg-2">
+
+                    <div class="card">
+                        <a href="" class="link-but-not-text">
+                            <center><img class="card-img-top rounded" src="{% static 'img/folder.png' %}" alt="folder img" style="width:150px;"></center>
+                        </a>
+                        <div class="card-body pt-2">
+                            <a href="" class="link-but-not-text">
+                                <h4 class="mb-1 fw-bold" style="font-size:12px;">{{ each.name|slice:":18" }}</h4>
+                            </a>
+                            <div class="row">
+                                <button class="btn btn-link btn-danger" data-original-title="Remove" data-toggle="modal" data-target="#deleteFolder{{ forloop.counter }}">
+                                    <i class="fa fa-times" style="font-size: 20px;"></i>
+                                </button>
+                                <button class="btn btn-link btn-primary btn-lg ml-auto" data-toggle="modal" data-target="#RenameFolder{{ forloop.counter }}">
+                                    <i class="fa fa-edit" style="font-size: 17px;"></i>
+                                </button>
+
+                                <div class="modal fade" id="deleteFolder{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Delete folder</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <form action="" method="POST" enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        Are you sure to delete this folder? <br>
+                                                        <input type="hidden" value="{{ each }}" name="folder-path">
+                                                        <small style="font-size: 10px; color:grey;">Note that deleting is permanent and you won't be able to recover this Folder</small>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-danger" name="upload">Delete</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal fade" id="RenameFolder{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Rename Folder</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <form action="" method="POST" enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        Enter your new name below for this folder:
+                                                        <input type="hidden" value="{{ each }}" name="folder-path">
+                                                        <input type="text" class="form-control" name="folder-name" placeholder="Enter your name here." value="{{ each.name }}">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary" name="upload">Rename</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
 {% block script %}
     function sweetAlert(){

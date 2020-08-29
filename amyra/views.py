@@ -89,7 +89,12 @@ def bill(request):
 
 def drive(request):
     folders = Folder.objects.filter(parent=None)
+    print(folders)
     context = {
         'folders': folders
     }
     return render(request, 'drive.html', context)
+
+
+def delete_folder(request):
+    if request.method == "POST":
