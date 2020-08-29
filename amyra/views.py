@@ -4,16 +4,13 @@ from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse_lazy
 from django.views.generic.base import View
-from .models import Customer, Destination, Item, Images
+from .models import Customer, Destination
 import os
 from pathlib import *
 import shutil
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views import View
-
-from .forms import PhotoForm, FileForm, PDFForm
-from .models import Files
 # Create your views here.
 
 

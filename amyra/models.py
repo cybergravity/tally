@@ -1,6 +1,9 @@
+import datetime
+
 from django.db import models
 from django.db.models.signals import post_save
 from num2words import num2words
+from django.utils.translation import ugettext_lazy as _
 
 
 # Create your models here.
@@ -106,3 +109,33 @@ def calculate_bill(sender, instance, created, **kwargs):
 
 
 post_save.connect(calculate_bill, sender=Destination)
+
+
+def file_location_path(instance, filename):
+    result = []
+    a = instance.folder
+    while True:
+        if a is None:
+            break
+        else:
+            result.insert(0, str(a))
+            a = a.parent
+    result = '/'.join(result)
+    return f'drive/{result}/{filename}'
+
+
+class Folder(models.Model):
+    parent = models.ForeignKey("self", on_delete=models.CASCADE, related_name='folders', null=True, blank=True)
+    name = models.CharField(_('Folder Name'), max_length=70)
+
+    def __str__(self):
+        return self.name
+
+
+class File(models.Model):
+    folder = models.ForeignKey(Folder, on_delete=models.CASCADE, related_name='folderfiles')
+    description = models.CharField(_('File Description'), max_length=70)
+    location = models.FileField(_('Location of the File'), upload_to=file_location_path, null=True, blank=True)
+
+    def __str__(self):
+        return self.description

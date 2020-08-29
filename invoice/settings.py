@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'invoice.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'BINOD',
+        'NAME': 'BINOD2.0',
         'USER': 'postgres',
         'PASSWORD': '1234',
         'HOST': 'localhost',

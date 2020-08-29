@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
-from .models import Destination, Item, Customer, Calculation
+from .models import Destination, Item, Customer, Calculation, Folder, File
 
 admin.site.site_header = 'KRISHNA KANCHAN BANGLES'
 
@@ -47,4 +47,6 @@ class CustomerAdmin(admin.ModelAdmin):
 
 admin.site.register(Customer, CustomerAdmin)
 admin.site.register(Calculation)
+admin.site.register(File)
+admin.site.register(Folder)
 admin.site.register(Destination, DestinationAdmin)
