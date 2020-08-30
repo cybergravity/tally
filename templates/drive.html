@@ -220,157 +220,70 @@
 	</div>
 </div>
     <div class="page-inner" style="margin-top: -40px;">
-        <div class="row row-projects">
-            {% for each in drive %}
-                <div class="col-sm-4 col-lg-2">
-                    {% if each.is_dir %}
-                        <div class="card">
-                            <a href="{% url 'drive_path' each %}" class="link-but-not-text">
-                                <center><img class="card-img-top rounded" src="{% static 'img/folder.png' %}" alt="folder img" style="width:150px;"></center>
-                            </a>
-                            <div class="card-body pt-2">
-                                <a href="{% url 'drive_path' each %}" class="link-but-not-text">
-                                    <h4 class="mb-1 fw-bold" style="font-size:12px;">{{ each.name|slice:":18" }}</h4>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="dropdown">
+                            <i class="icon-options" style="cursor:pointer; float: right;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span style="font-weight: bolder"></span>
+                            </i>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                                <a class="dropdown-item btn btn-round" href="#" data-toggle="modal" data-target="#copyModal">
+                                    <i class="icon-eye" style="font-weight: bolder; color:#8AA3FF;"></i>
+                                    Details
                                 </a>
-                                <div class="row">
-                                    <button class="btn btn-link btn-danger" data-original-title="Remove" data-toggle="modal" data-target="#deleteFolder{{ forloop.counter }}">
-                                        <i class="fa fa-times" style="font-size: 20px;"></i>
-                                    </button>
-                                    <button class="btn btn-link btn-primary btn-lg ml-auto" data-toggle="modal" data-target="#RenameFolder{{ forloop.counter }}">
-                                        <i class="fa fa-edit" style="font-size: 17px;"></i>
-                                    </button>
-
-                                    <div class="modal fade" id="deleteFolder{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLongTitle">Delete folder</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <form action="{% url 'remove_folder' path %}" method="POST" enctype="multipart/form-data">
-                                                    {% csrf_token %}
-                                                    <div class="modal-body">
-                                                        <div class="form-group">
-                                                            Are you sure to delete this folder? <br>
-                                                            <input type="hidden" value="{{ each }}" name="folder-path">
-                                                            <small style="font-size: 10px; color:grey;">Note that deleting is permanent and you won't be able to recover this Folder</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-danger" name="upload">Delete</button>
-                                                    </div>
-                                                </form>
+                                <div class="modal fade" id="copyModal" tabindex="-1" role="dialog" aria-labelledby="copyModalTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
                                             </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="modal fade" id="RenameFolder{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLongTitle">Rename Folder</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <form action="{% url 'rename_folder' path %}" method="POST" enctype="multipart/form-data">
-                                                    {% csrf_token %}
-                                                    <div class="modal-body">
-                                                        <div class="form-group">
-                                                            Enter your new name below for this folder:
-                                                            <input type="hidden" value="{{ each }}" name="folder-path">
-                                                            <input type="text" class="form-control" name="folder-name" placeholder="Enter your name here." value="{{ each.name }}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary" name="upload">Rename</button>
-                                                    </div>
-                                                </form>
+                                            <div class="modal-body">
+                                                Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    {% elif each.is_file %}
-                        <div class="card">
-                            <a href="/{{ path }}/{{ each.name }}" class="link-but-not-text">
-                                <center><img class="card-img-top rounded" src="{% static 'img/file.png' %}" alt="file img" style="width:130px;"></center>
-                            </a>
-                            <div class="card-body pt-2">
-                                <a href="" class="link-but-not-text">
-                                    <h4 class="mb-1 fw-bold" style="font-size:12px;">{{ each.name|slice:":18" }}</h4>
-                                </a>
-                                <div class="row">
-                                    <button class="btn btn-link btn-danger" data-original-title="Remove" data-toggle="modal" data-target="#deleteFile{{ forloop.counter }}">
-                                        <i class="fa fa-times" style="font-size: 20px;"></i>
-                                    </button>
-                                    <button class="btn btn-link btn-primary btn-lg ml-auto" data-toggle="modal" data-target="#renameFile{{ forloop.counter }}">
-                                        <i class="fa fa-edit" style="font-size: 17px;"></i>
-                                    </button>
-                                    <div class="modal fade" id="deleteFile{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLongTitle">Delete File</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <form action="{% url 'remove_file' path %}" method="POST" enctype="multipart/form-data">
-                                                    {% csrf_token %}
-                                                    <div class="modal-body">
-                                                        <div class="form-group">
-                                                            Are you sure to delete this File? <br>
-                                                            <input type="hidden" value="{{ each }}" name="file-path">
-                                                            <small style="font-size: 10px; color:grey;">Note that deleting is permanent and you won't be able to recover this file</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-danger" name="upload">Delete</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="modal fade" id="renameFile{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLongTitle">Rename File</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <form action="{% url 'rename_file' path %}" method="POST" enctype="multipart/form-data">
-                                                    {% csrf_token %}
-                                                    <div class="modal-body">
-                                                        <div class="form-group">
-                                                            Enter your new name below for this file:
-                                                            <input type="hidden" value="{{ each }}" name="file-path">
-                                                            <input type="text" class="form-control" name="file-name" value="{{ each.name }}" placeholder="Enter your name here.">
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary" name="upload">Rename</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <a class="dropdown-item" href="#">
+                                    <i class="icon-share" style="font-weight: bolder; color:#8AA3FF;"></i>
+                                    Share
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fa fa-copy" style="font-weight: bolder; color:#8AA3FF;"></i>
+                                    Copy
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="icon-arrow-right-circle" style="font-weight: bolder; color:#8AA3FF;"></i>
+                                    Move
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="icon-pencil" style="font-weight: bolder; color:#8AA3FF;"></i>
+                                    Rename
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="icon-trash" style="font-weight: bolder; color:#8AA3FF;"></i>
+                                    Remove
+                                </a>
                             </div>
                         </div>
-                    {% endif %}
+                        <h6 class="card-subtitle mb-2 text-muted" style="font-weight: bold;">
+                            <img src="{% static 'img/folder.png' %}" height="30px" alt="">
+                            Card subtitle
+                        </h6>
+                        <small>03 May 235 KB 3 Members</small>
+                    </div>
                 </div>
-            {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}
